@@ -1,0 +1,57 @@
+git status
+git stash
+git fetch
+git pull
+git stash pop
+git add .
+git commit -m "msg"
+git push
+
+COMANDI AVANZATI CON RELATIVA SPIEGAZIONE
+git config --list
+- comando per farmi mostrare la lista dei dati configurati nel git del mio pc
+git config --global --unset <parametro da eliminare>
+- comando per eliminare un alias, non variando il funzionamento del programma
+git commit --amend 
+- comando per aggiungere ad un commit già mandato un ultimo add non presente 
+  nello staging
+  git commit
+  git add
+  git commit --amend
+  questa rappresenta la scaletta esatta di aggiunta e correzione
+git checkout -- file
+- istruzione per annullare tutte le modifiche apportate ad un file
+  penso funzioni anche per l'intera cartella (da provare)
+git reset HEAD <nomefile>
+- istruzione per rimuovere un commit del file in staging
+git reset HEAD~1
+- istruzione per rimuovere tutti i file del commit precedente, non solamente uno
+  ossia unstanging dei file mandati, questo comando non comporta cambiamenti
+  nelle modifiche
+git log
+- istruzione che consente al visualizzazione della cronologia completa dei commit
+  effettuati e ordinati a partire dal più recente
+git log -p -2
+- istruzione per visualizzare e quindi confrontarele differenze tra i diversi
+  commit, in questo caso verranno mostrati in output solo gli ultimi 2
+
+
+
+CREARE UN PRIMO FILE SU GIT IN REPOSITORY GIA' ESISTENTE MA VUOTA 
+
+- andare nella nuova repository (già creata) con i permessi di gestione
+- in alto cliccare sul link in blu "README"
+- nella pagina che si apre andare in fondo e cliccare "commit new file"
+- (opzionale) sul terminale git cliccare su "Branch: master" in alto a sinistra
+e inserire il nome in find or create a branch del nuovo branch che si vuole creare
+ad es "console-java"
+- clonare il progetto con il git bash in locale
+	- git clone http..........
+	- cd nome cartella esterna
+	- git checkout console-java
+- copiare manualmente tutti i file di un vecchio progetto ad eccezione di cartella
+out, file readme.md, cartella .git
+- fare il push
+	- git add .
+	- git commit -m "msg"
+	- git push 
