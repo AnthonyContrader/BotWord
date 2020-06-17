@@ -22,7 +22,7 @@ public class ProductController implements Controller {
 	}
 
 	public ProductDTO readProduct(int prodId) {
-		return this.productsService.readProduct(prodId);
+		return this.productsService.findByID(prodId);
 	}
 
 	public boolean insertProduct(ProductDTO productsDTO) {
