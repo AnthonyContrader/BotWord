@@ -12,7 +12,7 @@ public class ConverterProduct {
 		ProductDTO productDTO = null;
 		if (product != null) {
 			productDTO = new ProductDTO();
-			productDTO.setProductId(product.getProductId());
+			productDTO.setProdId(product.getProdId());
 			productDTO.setName(product.getName());
       productDTO.setDescription(product.getDescription());
       productDTO.setQuantity(product.getQuantity());
@@ -24,12 +24,12 @@ public class ConverterProduct {
 	public static Product toEntity(ProductDTO productDTO) {
 		Product product = null;
 		if (productDTO != null) {
-			user = new User();
-			user.setProductId(productDTO.getProductId());
-			user.setName(productDTO.getName());
-      user.setDescription(productDTO.getDescription());
-      user.setQuantity(productDTO.getQuantity());
-			user.setPrice(productDTO.getPrice());
+			
+			productDTO.setProdId(productDTO.getProdId());
+			productDTO.setName(productDTO.getName());
+			productDTO.setDescription(productDTO.getDescription());
+			productDTO.setQuantity(productDTO.getQuantity());
+			productDTO.setPrice(productDTO.getPrice());
 		}
 		return product;
 	}
