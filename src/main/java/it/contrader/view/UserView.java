@@ -25,7 +25,7 @@ public class UserView implements View {
 	@Override
 	public void showOptions() {
 		
-		System.out.println("\n------ Gestione utenti -------\n");
+		System.out.println("\n------ Gestione Utenti -------\n");
 		
 		System.out.println("ID\tUsername\tTipoUtente");
 		System.out.print("------------------------------------------------------");
