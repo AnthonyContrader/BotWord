@@ -16,6 +16,7 @@ CREATE TABLE users (
   user_password varchar(50) NOT NULL,
   user_name varchar(50) NOT NULL,
   user_surname varchar(50) NOT NULL,
+  user_address varchar(50) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Insert all users';
 

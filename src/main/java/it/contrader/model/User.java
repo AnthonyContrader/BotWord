@@ -7,6 +7,7 @@ public class User {
 	private String userPassword;
 	private String name;
 	private String surname;
+	private String address;
 
 	public User() {
 	}
@@ -64,9 +65,18 @@ public class User {
 		this.surname = surname;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return this.getUserId() + "\t" + this.getUsername() + "\t" + this.getUsertype();
+		return this.getUserId() + "\t" + this.getUsername() + "\t" + this.getUsertype() + "\t" + this.getName()
+		+ "\t" + this.getSurname() + "\t" + this.getAddress();
 	}
 
 	public boolean equals(User userCompare) {
@@ -77,7 +87,18 @@ public class User {
 		if (!this.getUsertype().equals(userCompare.getUsertype())) {
 			return false;
 		}
-
+		if (!this.getUserPassword().equals(userCompare.getUserPassword())) {
+			return false;
+		}
+		if (!this.getName().equals(userCompare.getName())) {
+			return false;
+		}
+		if (!this.getSurname().equals(userCompare.getSurname())) {
+			return false;
+		}
+		if (!this.getAddress().equals(userCompare.getAddress())) {
+			return false;
+		}
 		return true;
 
 	}
