@@ -20,4 +20,4 @@ CREATE TABLE users (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Insert all users';
 
-INSERT INTO users VALUES (1,'admin','admin','admin','Mario','Rossi'),(2,'user','user','user','Mario','Gialli');
+INSERT INTO users VALUES (1,'admin','admin','admin','Mario','Rossi','Via x'),(2,'user','user','user','Mario','Gialli', 'Piazza y');
