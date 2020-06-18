@@ -6,3 +6,17 @@ CREATE TABLE products (
   price double(10,2) NOT NULL,
   PRIMARY KEY (prod_id)
 );
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE users (
+  user_id int(11) NOT NULL AUTO_INCREMENT,
+  user_user varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  user_type varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  user_password varchar(50) NOT NULL,
+  user_name varchar(50) NOT NULL,
+  user_surname varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Insert all users';
+
+INSERT INTO users VALUES (1,'admin','admin','admin','Mario','Rossi'),(2,'user','user','user','Mario','Gialli');
