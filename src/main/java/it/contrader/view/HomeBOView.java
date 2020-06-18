@@ -1,5 +1,5 @@
 /**
- * Manage a Business Owner view
+ * Client view
  */
 
 package it.contrader.view;
@@ -20,7 +20,7 @@ public class HomeBOView implements View {
 
     public void showOptions() {
         System.out.println("-------MENU-------\n");
-        System.out.println("Seleziona cosa vuoi gestire:");
+        System.out.println("Seleziona cosa vuoi fare:");
         System.out.println("[P]rodotti [E]sci");
         this.choice = this.getInput();
     }
@@ -30,7 +30,7 @@ public class HomeBOView implements View {
         	MainDispatcher.getInstance().callView("Prodotti", null);
         }
         
-        if (choice.equalsIgnoreCase("L"))
+        if (choice.equalsIgnoreCase("E"))
             MainDispatcher.getInstance().callAction("Login", "doControl", null);
         else {
             Request request = new Request();
