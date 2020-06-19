@@ -1,21 +1,22 @@
 package it.contrader.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import it.contrader.controller.Request;
-import it.contrader.controller.UserController;
+import it.contrader.controller.ProductController; 
 import it.contrader.main.MainDispatcher;
-import it.contrader.model.User;
+import it.contrader.model.Product;
 
-public class UserView implements View {
+public class ProductAdminView implements View {
 
-	private UserController usersController;
+ 	private ProductController productController;
 	private Request request;
 	private String choice;
 	
-	public UserView() {
-		this.usersController = new UserController();
+	public ProductAdminView() {
+		this.productController = new ProductController();
 	}
 
 	@Override
@@ -25,13 +26,19 @@ public class UserView implements View {
 	@Override
 	public void showOptions() {
 		
-		System.out.println("\n------ Gestione Utenti -------\n");
+		System.out.println("\n------ Lista Prodotti -------\n");
 		
-		System.out.println("ID\tUsername\tTipoUtente");
+		System.out.println("ID\tNome");
 		System.out.print("------------------------------------------------------");
-		List<User> users = usersController.getAllUser();
+		
+		List<Product> products = productController.getAllProduct();
+		
+	
+		
 		System.out.println();
-		users.forEach(user -> System.out.println(user.toString()));
+		products.forEach(product -> System.out.println(product.toString())); // creare in model
+
+		
 		System.out.println();
 		
 		System.out.println("Scegli l'operazione da effettuare:");
@@ -44,8 +51,10 @@ public class UserView implements View {
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "");
+	
 	}
-
+	
+                                                      
 	@Override
 	public String getInput() {
 		Scanner scanner = new Scanner(System.in);
@@ -54,7 +63,8 @@ public class UserView implements View {
 
 	@Override
 	public void submit() {
-		    MainDispatcher.getInstance().callAction("User", "doControl", this.request);
-	}
+		 MainDispatcher.getInstance().callAction("User", "doControl", this.request);
+            }
+		
 
 }
