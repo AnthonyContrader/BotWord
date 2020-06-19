@@ -53,9 +53,13 @@ public class ProductDAO {
 			preparedStatement.setInt(1, prodId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
+			if(resultSet.next()) {
 			Product	product = createProduct(resultSet);
 			product.setProdId(resultSet.getInt("prod_id")); // controllare campi	
 			return product;
+			}
+			else 
+				return null;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;

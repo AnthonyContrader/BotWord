@@ -12,9 +12,13 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String usertype) {
+	public User(String username, String usertype, String password, String name, String surname, String address) {
 		this.username = username;
 		this.usertype = usertype;
+		this.userPassword = password;
+		this.name = name;
+		this.surname = surname;
+		this.address = address;
 	}
 
 	public int getUserId() {

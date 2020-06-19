@@ -43,7 +43,7 @@ public class ProductController implements Controller {
 		String choice = (String) request.get("choice");
 
 		if (mode == "menu") {
-			MainDispatcher.getInstance().callView("Product", null);
+			MainDispatcher.getInstance().callView("Prodotti", null);
 		} else {
 			switch (choice.toUpperCase()) {
 			case "L":

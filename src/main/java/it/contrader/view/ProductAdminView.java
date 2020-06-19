@@ -63,7 +63,7 @@ public class ProductAdminView implements View {
 
 	@Override
 	public void submit() {
-		 MainDispatcher.getInstance().callAction("User", "doControl", this.request);
+		 MainDispatcher.getInstance().callAction("Product", "doControl", this.request);
             }
 		
 
