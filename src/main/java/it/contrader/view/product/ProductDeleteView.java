@@ -34,7 +34,7 @@ public class ProductDeleteView implements View {
 		//System.out.println();
 		//products.forEach(product -> System.out.println(product.toString()));
 		//System.out.println();
-		//System.out.println("Digita l'ID:");
+		System.out.println("Digita l'ID:");
 		String productId = getInput();
 
 		if (productId != null && StringUtils.isStrictlyNumeric(productId)) {

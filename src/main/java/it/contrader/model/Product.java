@@ -60,8 +60,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "ID: " + this.getProdId() + "Nome: " + this.getName() + "Descrizione: " + this.getDescription()
-				+ "Quantit�: " + this.getQuantity() + "Prezzo: " + this.getPrice() + " �";
+		return "ID: " + this.getProdId() + " Nome: " + this.getName() + " Descrizione: " + this.getDescription()
+				+ " Disponibilita': " + this.getQuantity() + " Prezzo: " + this.getPrice();
 	}
 
 	public boolean equals(Product prodCompare) {

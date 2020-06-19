@@ -37,8 +37,6 @@ package it.contrader.view.product;
 			productquantity = getInput();
 			
 			if (!productname.equals("") && !productdescription.equals("") && !productprice.equals("") && !productquantity.equals("")) {
-				
-				Integer.parseInt(getInput());
 				productsController.insertProduct(new ProductDTO(productname, productdescription, Integer.parseInt(productquantity), Double.parseDouble(productprice)));
 			}
 		}
