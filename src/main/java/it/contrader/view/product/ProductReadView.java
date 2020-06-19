@@ -32,11 +32,11 @@ public class ProductReadView implements View {
 
 		try {
 			productsIdToRead = Integer.parseInt(getInput());
-			UserDTO productsDB = productsController.readProduct(productsIdToRead);
+			ProductDTO productsDB = productsController.readProduct(productsIdToRead);
 
-			System.out.println("Id: " + productsDB.getProductId());
-			System.out.println("nome: " + productsDB.getProductname());
-			System.out.println("descrizione: " + userDB.getProductdescrition());
+			System.out.println("Id: " + productsDB.getProdId());
+			System.out.println("nome: " + productsDB.getName());
+			System.out.println("descrizione: " + productsDB.getDescription());
 			
 			//Wait to show
 			System.out.println("Premi un tasto per continuare");
