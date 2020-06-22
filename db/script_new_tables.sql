@@ -26,8 +26,12 @@ CREATE TABLE shopping_lists (
   shopping_list_id int(11) NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
   total_price double(10,2) NOT NULL,
-  shopping_list list(),
+  shopping_list json(),
   PRIMARY KEY (shopping_list_id)
 );
 
 INSERT INTO users VALUES (1,'admin','admin','admin','Mario','Rossi','Via x'),(2,'user','user','user','Mario','Gialli', 'Piazza y');
+
+INSERT INTO products VALUES (1, "sedia", "ha 4 piedi", 10, 3,20), (2, "tavolo", "ha 4 piedi", 10, 7,20), (3, "martello", "pesa poco", 40, 5,20),(4, "cacciavite", "è comodo", 40, 2,20) ;
+
+INSERT INTO shopping_lists VALUES (1, 2, 11,80, '{"1": 2, "3": 2}');

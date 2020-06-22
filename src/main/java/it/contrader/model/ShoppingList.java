@@ -1,19 +1,21 @@
 package it.contrader.model;
 
+import org.json.simple.JSONObject;
+
 public class ShoppingList {
 	private int shopListId;
 	private int userId;
-  private ArrayList<ShoppingItem> shoppingList = new ArrayList<>();
+  private JSONObject shoppingList = new JSONObject();
   private Double totalPrice;
 
 	public ShoppingList() {}
 
-	public ShoppingList(int userId, ArrayList<ShoppingItem> shoppingList, Double totalPrice) {
+	public ShoppingList(int userId, JSONObject shoppingList, Double totalPrice) {
 		this.userId = userId;
     this.shoppingList = shoppingList;
     this.totalPrice = totalPrice;
 	}
-  
+
   // shoppingList.add( new ShoppingItem( "Macbook Pro", 100000L ) );
 
   public void setUserId(int userId){
@@ -24,11 +26,11 @@ public class ShoppingList {
     return userId;
   }
 
-  public void setShoppingList(ArrayList<ShoppingItem> shoppingList){
+  public void setShoppingList(JSONObject shoppingList){
     this.shoppingList = shoppingList;
   }
 
-  public ArrayList<ShoppingItem> getShoppingList(){
+  public JSONObject getShoppingList(){
     return shoppingList;
   }
 
