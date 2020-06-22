@@ -17,9 +17,9 @@ public class UserDTO {
 		this.surname = surname;
 		this.address = address;
 	}
-	
-	public UserDTO() {} 
-	
+
+	public UserDTO() {}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -76,4 +76,12 @@ public class UserDTO {
 		this.usertype = usertype;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public String toString() {
+		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
+	}
 }

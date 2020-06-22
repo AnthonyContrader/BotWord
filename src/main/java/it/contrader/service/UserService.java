@@ -22,18 +22,26 @@ public class UserService {
 	public boolean insertUser(UserDTO userDTO) {
 		return this.userDAO.insertUser(ConverterUser.toEntity(userDTO));
 	}
-	
+
 	public UserDTO readUser(int userId) {
 		return ConverterUser.toDTO(this.userDAO.readUser(userId));
 	}
-	
+
 	public boolean updateUser(UserDTO userDTO) {
 		return this.userDAO.updateUser(ConverterUser.toEntity(userDTO));
 	}
-	
+
 	public boolean deleteUser(int userId) {
 		return this.userDAO.deleteUser(userId);
 	}
-	
-	
+
+// public class UserService extends AbstractService<User, UserDTO> {
+//
+// 	//Istanzio DAO  e Converter specifici.
+// 	public UserService(){
+// 		this.dao = new UserDAO();
+// 		this.converter = new UserConverter();
+// 	}
+// }
+
 }
