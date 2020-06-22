@@ -25,7 +25,7 @@ public class ProductUpdateView implements View {
 	@Override
 	public void showOptions() {
 		int productIdToUpdate;
-		String upname, updescription, upprice, upquantity;
+		String upname, updescription, upprice, upquantity, upCategory;
 
 		/*
 		 * List<Product> products; Integer productsId; String description; products =
@@ -62,6 +62,11 @@ public class ProductUpdateView implements View {
 				upprice = getInput();
 				if (!upprice.equals(""))
 					productDTO.setPrice(Double.parseDouble(upprice));
+				
+				System.out.println("Digita la nuova categoria del prodotto");
+				upCategory = getInput();
+				if(!upCategory.equals(""))
+					productDTO.setCategory(upCategory);
 
 				productsController.updateProduct(productDTO);
 

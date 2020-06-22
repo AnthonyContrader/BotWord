@@ -14,9 +14,10 @@ public class ConverterProduct {
 			productDTO = new ProductDTO();
 			productDTO.setProdId(product.getProdId());
 			productDTO.setName(product.getName());
-      productDTO.setDescription(product.getDescription());
-      productDTO.setQuantity(product.getQuantity());
+			productDTO.setDescription(product.getDescription());
+			productDTO.setQuantity(product.getQuantity());
 			productDTO.setPrice(product.getPrice());
+			productDTO.setCategory(product.getCategory());
 		}
 		return productDTO;
 	}
@@ -30,6 +31,7 @@ public class ConverterProduct {
 			product.setDescription(productDTO.getDescription());
 			product.setQuantity(productDTO.getQuantity());
 			product.setPrice(productDTO.getPrice());
+			product.setCategory(productDTO.getCategory());
 		}
 		return product;
 	}

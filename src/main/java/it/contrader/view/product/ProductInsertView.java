@@ -24,7 +24,7 @@ package it.contrader.view.product;
 
 		@Override
 		public void showOptions() {
-			String productname, productdescription, productquantity, productprice;
+			String productname, productdescription, productquantity, productprice, productCategory;
 
 			System.out.println("Inserisci i campi del prodotto:");
 			System.out.println("Digita il nome: ");
@@ -35,9 +35,11 @@ package it.contrader.view.product;
 			productprice = getInput();
 			System.out.println("Inserisci la disponibilita del prodotto");
 			productquantity = getInput();
+			System.out.println("Inserisci la categoria del prodotto");
+			productCategory = getInput();
 			
 			if (!productname.equals("") && !productdescription.equals("") && !productprice.equals("") && !productquantity.equals("")) {
-				productsController.insertProduct(new ProductDTO(productname, productdescription, Integer.parseInt(productquantity), Double.parseDouble(productprice)));
+				productsController.insertProduct(new ProductDTO(productname, productdescription, Integer.parseInt(productquantity), Double.parseDouble(productprice), productCategory));
 			}
 		}
 
