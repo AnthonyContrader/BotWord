@@ -9,12 +9,14 @@ import java.util.Scanner;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 
+
 public class HomeBOView implements View {
 
     private String choice;
 
     public void showResults(Request request) {
     	System.out.println("Benvenuto in WMES "+request.get("nomeUtente").toString());
+    	
     }
 
 

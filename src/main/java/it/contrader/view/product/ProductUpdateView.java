@@ -13,6 +13,7 @@ public class ProductUpdateView implements View {
 
 	private ProductController productsController;
 	private Request request;
+	private static String usertype = "Admin" ;
 
 	public ProductUpdateView() {
 		this.productsController = new ProductController();
@@ -25,7 +26,7 @@ public class ProductUpdateView implements View {
 	@Override
 	public void showOptions() {
 		int productIdToUpdate;
-		String upname, updescription, upprice, upquantity;
+		String upname, updescription, upprice, upquantity, upCategory;
 
 		/*
 		 * List<Product> products; Integer productsId; String description; products =
@@ -62,6 +63,11 @@ public class ProductUpdateView implements View {
 				upprice = getInput();
 				if (!upprice.equals(""))
 					productDTO.setPrice(Double.parseDouble(upprice));
+				
+				System.out.println("Digita la nuova categoria del prodotto");
+				upCategory = getInput();
+				if(!upCategory.equals(""))
+					productDTO.setCategory(upCategory);
 
 				productsController.updateProduct(productDTO);
 
@@ -84,6 +90,7 @@ public class ProductUpdateView implements View {
 		request = new Request();
 		request.put("mode", "menu");
 		request.put("choice", "");
+		request.put("userType",usertype );
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 

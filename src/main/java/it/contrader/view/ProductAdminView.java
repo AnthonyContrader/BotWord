@@ -14,6 +14,7 @@ public class ProductAdminView implements View {
  	private ProductController productController;
 	private Request request;
 	private String choice;
+	private static String usertype = "Admin" ;
 	
 	public ProductAdminView() {
 		this.productController = new ProductController();
@@ -28,7 +29,7 @@ public class ProductAdminView implements View {
 		
 		System.out.println("\n------ Lista Prodotti -------\n");
 		
-		System.out.println("ID\tNome");
+		System.out.println("ID\tNome\tDisponibilita\tPrezzo");
 		System.out.print("------------------------------------------------------");
 		
 		List<Product> products = productController.getAllProduct();
@@ -36,7 +37,7 @@ public class ProductAdminView implements View {
 	
 		
 		System.out.println();
-		products.forEach(product -> System.out.println(product.toString())); // creare in model
+		products.forEach(product -> System.out.println(product.getProdId()+"\t"+product.getName()+"\t"+product.getQuantity()+"\t"+product.getPrice())); // creare in model
 
 		
 		System.out.println();
@@ -51,6 +52,7 @@ public class ProductAdminView implements View {
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "");
+		request.put("userType",usertype );
 	
 	}
 	

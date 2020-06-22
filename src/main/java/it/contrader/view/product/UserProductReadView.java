@@ -11,13 +11,13 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.model.Product;
 import it.contrader.view.View;
 
-public class ProductReadView implements View {
+public class UserProductReadView implements View {
 
 	private ProductController productsController;
 	private Request request;
-	private static String usertype = "Admin" ;
+	private static String usertype = "User" ;
 
-	public ProductReadView() {
+	public UserProductReadView() {
 		this.productsController = new ProductController();
 	}
 

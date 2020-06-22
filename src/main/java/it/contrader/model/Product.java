@@ -7,15 +7,17 @@ public class Product {
 	private String description;
 	private Integer quantity;
 	private Double price;
+	private String category;
 
 	public Product() {
 	}
 
-	public Product(String name, String description, Integer quantity, Double price) {
+	public Product(String name, String description, Integer quantity, Double price, String category) {
 		this.name = name;
 		this.description = description;
 		this.quantity = quantity;
 		this.price = price;
+		this.category = category;
 	}
 
 	public int getProdId() {
@@ -28,6 +30,14 @@ public class Product {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public void setName(String name) {
@@ -61,7 +71,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "ID: " + this.getProdId() + " Nome: " + this.getName() + " Descrizione: " + this.getDescription()
-				+ " Disponibilita': " + this.getQuantity() + " Prezzo: " + this.getPrice();
+				+ " Disponibilita': " + this.getQuantity() + " Prezzo: " + this.getPrice() + " Categoria: " + this.getCategory();
 	}
 
 	public boolean equals(Product prodCompare) {
@@ -73,6 +83,8 @@ public class Product {
 			return false;
 		if (!this.getPrice().equals(prodCompare.getPrice()))
 				return false;
+		if(!this.getCategory().equals(prodCompare.getCategory()))
+			return false;
 
 		return true;
 	}

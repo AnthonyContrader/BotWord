@@ -41,9 +41,16 @@ public class ProductController implements Controller {
 	public void doControl(Request request) {
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
+		String tipoutente = (String) request.get("userType");
+		
+		System.out.println("tipo User = "+ tipoutente);
 
 		if (mode == "menu") {
-			MainDispatcher.getInstance().callView("Prodotti", null);
+			 if (tipoutente == "Admin") 
+	                MainDispatcher.getInstance().callView("ProductAdmin", null);
+	           else
+			        MainDispatcher.getInstance().callView("Prodotti", null);
+			 
 		} else {
 			switch (choice.toUpperCase()) {
 			case "L":
@@ -57,6 +64,9 @@ public class ProductController implements Controller {
 				break;
 			case "C":
 				MainDispatcher.getInstance().callView(sub_package + "ProductDelete", null);
+				break;
+			case "E":
+				MainDispatcher.getInstance().callView("Login", null);
 				break;
 			}
 		}

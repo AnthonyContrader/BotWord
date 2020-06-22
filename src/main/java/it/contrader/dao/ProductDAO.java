@@ -17,9 +17,9 @@ public class ProductDAO {
 
 	private final String FIND_ALL = "select * from products";
 	private final String FIND_BY_ID = "select * from products where prod_id = ?";
-	private final String INSERT_QUERY = "insert into products (name, description, quantity, price) "
-			+ "values (?,?,?,?)";
-	private final String UPDATE_QUERY = "update products set name = ?, description = ?, quantity = ?, price = ?";
+	private final String INSERT_QUERY = "insert into products (name, description, quantity, price, category) "
+			+ "values (?,?,?,?,?)";
+	private final String UPDATE_QUERY = "update products set name = ?, description = ?, quantity = ?, price = ?, category = ? where prod_id = ?";
 	private final String DELETE_QUERY = "delete from products where prod_id = ?";
 
 	public ProductDAO() {
@@ -73,6 +73,7 @@ public class ProductDAO {
 			preparedStatement.setString(2, product.getDescription());
 			preparedStatement.setInt(3, product.getQuantity());
 			preparedStatement.setDouble(4, product.getPrice());
+			preparedStatement.setString(5, product.getCategory());
 			int affectedRows = preparedStatement.executeUpdate();
 			if (affectedRows > 0)
 				return true;
@@ -114,6 +115,8 @@ public class ProductDAO {
 				preparedStatement.setString(2, productToUpdate.getDescription());
 				preparedStatement.setInt(3, productToUpdate.getQuantity());
 				preparedStatement.setDouble(4, productToUpdate.getPrice());
+				preparedStatement.setString(5, productToUpdate.getCategory());
+				preparedStatement.setInt(6, productToUpdate.getProdId());
 				int affectedRows = preparedStatement.executeUpdate();
 				if (affectedRows > 0)
 					return true;
@@ -144,6 +147,6 @@ public class ProductDAO {
 
 	private Product createProduct(ResultSet rs) throws SQLException {
 		return new Product(rs.getString("name"), // controllare i campi
-				rs.getString("description"), rs.getInt("quantity"), rs.getDouble("price"));
+				rs.getString("description"), rs.getInt("quantity"), rs.getDouble("price"), rs.getString("category"));
 	}
 }
