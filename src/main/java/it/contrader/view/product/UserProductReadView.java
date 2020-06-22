@@ -38,6 +38,7 @@ public class UserProductReadView implements View {
 			System.out.println("Id: " + productsDB.getProdId());
 			System.out.println("nome: " + productsDB.getName());
 			System.out.println("descrizione: " + productsDB.getDescription());
+			System.out.println("categoria: " + productsDB.getCategory());
 			
 			//Wait to show
 			System.out.println("Premi un tasto per continuare");
