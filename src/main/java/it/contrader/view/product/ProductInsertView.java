@@ -13,6 +13,7 @@ package it.contrader.view.product;
 
 		private ProductController productsController;
 		private Request request;
+		private static String usertype = "Admin" ;
 
 		public ProductInsertView() {
 			this.productsController = new ProductController();
@@ -54,6 +55,7 @@ package it.contrader.view.product;
 			request = new Request();
 			request.put("mode", "menu");
 			request.put("choice", "");
+			request.put("userType",usertype );
 			MainDispatcher.getInstance().callAction("Product", "doControl", request);
 		}
 

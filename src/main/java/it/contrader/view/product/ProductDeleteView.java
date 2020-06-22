@@ -16,6 +16,7 @@ public class ProductDeleteView implements View {
 
 	private ProductController productController;
 	private Request request;
+	private static String usertype = "Admin" ;
 
 	public ProductDeleteView() {
 		this.productController = new ProductController();
@@ -56,6 +57,7 @@ public class ProductDeleteView implements View {
 		request = new Request();
 		request.put("mode", "menu");
 		request.put("choice", "");
+		request.put("userType",usertype );
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 

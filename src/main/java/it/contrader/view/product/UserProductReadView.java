@@ -11,13 +11,13 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.model.Product;
 import it.contrader.view.View;
 
-public class ProductReadView implements View {
+public class UserProductReadView implements View {
 
 	private ProductController productsController;
 	private Request request;
-	private static String usertype = "Admin" ;
+	private static String usertype = "User" ;
 
-	public ProductReadView() {
+	public UserProductReadView() {
 		this.productsController = new ProductController();
 	}
 
@@ -38,7 +38,6 @@ public class ProductReadView implements View {
 			System.out.println("Id: " + productsDB.getProdId());
 			System.out.println("nome: " + productsDB.getName());
 			System.out.println("descrizione: " + productsDB.getDescription());
-			System.out.println("categoria: " + productsDB.getCategory());
 			
 			//Wait to show
 			System.out.println("Premi un tasto per continuare");

@@ -14,6 +14,7 @@ public class ProdottiView implements View {
  	private ProductController productController;
 	private Request request;
 	private String choice;
+	private static String sub_package = "product.";
 	
 	public ProdottiView() {
 		this.productController = new ProductController();
@@ -40,7 +41,8 @@ public class ProdottiView implements View {
 		
 		
 		System.out.println();
-		products.forEach(product -> System.out.println(product.toString())); // creare in model
+		products.forEach(product -> System.out.println(product.getProdId()+"\t"+product.getName())); // creare in model
+		
 		//stampaList(products); //test debug
 		
 		System.out.println();
@@ -77,7 +79,7 @@ public class ProdottiView implements View {
 	public void submit() {
 		if (choice.equalsIgnoreCase("L")) {
 			
-			MainDispatcher.getInstance().callAction("Product", "doControl", this.request);
+			MainDispatcher.getInstance().callView(sub_package + "UserProductRead", null);
 	        }
         if (choice.equalsIgnoreCase("E")) {
 			

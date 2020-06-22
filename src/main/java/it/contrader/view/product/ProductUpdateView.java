@@ -13,6 +13,7 @@ public class ProductUpdateView implements View {
 
 	private ProductController productsController;
 	private Request request;
+	private static String usertype = "Admin" ;
 
 	public ProductUpdateView() {
 		this.productsController = new ProductController();
@@ -89,6 +90,7 @@ public class ProductUpdateView implements View {
 		request = new Request();
 		request.put("mode", "menu");
 		request.put("choice", "");
+		request.put("userType",usertype );
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 
