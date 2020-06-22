@@ -4,11 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import org.json.simple.JSONObject;
 
 import it.contrader.controller.GestoreEccezioni;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.ShoppingList;
-import it.contrader.model.ShoppingItem;
 
 public class ShoppingListDAO {
 
@@ -30,11 +30,11 @@ public class ShoppingListDAO {
 			ShoppingList ShoppingLists;
 			while (resultSet.next()) {
 				int shoppingListId = resultSet.getInt("shopping_list_id");
-				int userId= resultSet.getString("user_id");
+				int userId= resultSet.getInt("user_id");
 				Double totalPrice = resultSet.getString("total_price");
-        ArrayList<ShoppingItem> shoppingList =  resultSet.getString("shopping_list");
+        JSONObject shoppingList =  resultSet.getShoppingList("shopping_list");
 				shoppingList = new ShoppingList(userId, totalPrice, shoppingList);
-				user.setShoppingListId(shoppingListId);
+				shoppingLists.setShoppingListId(shoppingListId);
 				shoppingListsList.add(shoppingList);
 			}
 		} catch (SQLException e) {
@@ -68,9 +68,9 @@ public class ShoppingListDAO {
 			resultSet.next();
       int userId;
       Double totalPrice;
-      ArrayList<ShoppingItem> shoppingList;
+      JSONObject shoppingList;
 
-			userId = resultSet.getString("user_id");
+			userId = resultSet.getInt("user_id");
 			Double resultSet.getString("total_price");
 			ShoppingList shoppingList = new ShoppingList(userId, totalPrice, shoppingList);
 			user.setShoppingListId(resultSet.getInt("shopping_list_id"));
