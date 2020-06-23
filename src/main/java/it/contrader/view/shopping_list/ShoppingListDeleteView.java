@@ -1,7 +1,6 @@
 package it.contrader.view.shopping_list;
 
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.mysql.cj.util.StringUtils;
@@ -9,7 +8,6 @@ import com.mysql.cj.util.StringUtils;
 import it.contrader.controller.Request;
 import it.contrader.controller.ShoppingListController;
 import it.contrader.main.MainDispatcher;
-import it.contrader.model.ShoppingList;
 import it.contrader.view.View;
 
 public class ShoppingListDeleteView implements View {

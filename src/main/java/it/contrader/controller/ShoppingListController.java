@@ -9,7 +9,7 @@ import it.contrader.service.ShoppingListService;
 
 public class ShoppingListController implements Controller {
 
-	private static String sub_package = "shoppingList.";
+	private static String sub_package = "shopping_list.";
 	private ShoppingListService shoppingListsService;
 	private Request request;
 

@@ -16,7 +16,7 @@ public class ShoppingListService {
 	}
 
 	public List<ShoppingList> getAllShoppingList() {
-		return this.shoppingListDAO.getAllShoppingList();
+		return this.shoppingListDAO.getAllShoppingLists();
 	}
 
 	public boolean insertShoppingList(ShoppingListDTO shoppingListDTO) {

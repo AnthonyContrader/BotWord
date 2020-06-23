@@ -1,4 +1,4 @@
-ackage it.contrader.view;
+package it.contrader.view;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +14,7 @@ public class ShoppingListView implements View {
 	private Request request;
 	private String choice;
 
-	public UserView() {
+	public ShoppingListView() {
 		this.shoppingListsController = new ShoppingListController();
 	}
 
@@ -30,7 +30,7 @@ public class ShoppingListView implements View {
 		System.out.print("------------------------------------------------------");
 		List<ShoppingList> shoppingLists = shoppingListsController.getAllShoppingList();
 		System.out.println();
-		users.forEach(shoppingList -> System.out.println(shoppingList.toString()));
+		shoppingLists.forEach(shoppingList -> System.out.println(shoppingList.toString()));
 		System.out.println();
 
 		System.out.println("Scegli l'operazione da effettuare:");
@@ -53,6 +53,6 @@ public class ShoppingListView implements View {
 
 	@Override
 	public void submit() {
-		    MainDispatcher.getInstance().callAction("User", "doControl", this.request);
+		    MainDispatcher.getInstance().callAction("ShoppingList", "doControl", this.request);
 	}
 }

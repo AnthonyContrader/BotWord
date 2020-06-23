@@ -12,10 +12,10 @@ public class ConverterShoppingList {
 		ShoppingListDTO shoppingListDTO = null;
 		if (shoppingList != null) {
 			shoppingListDTO = new ShoppingListDTO();
-			shoppingListDTO.setShoppingListId(shoppingList.getShoppingListId());
-			shoppingListDTO.setShoppingListUserId(shoppingList.getShoppingListUserId());
-      shoppingListDTO.setShoppingListTotalPrice(shoppingList.getShoppingListTotalPrice());
-			shoppingListDTO.setShoppingListShoppingList(shoppingList.getShoppingListShoppingList());
+			shoppingListDTO.setShoppingListId(shoppingList.getShopListId());
+			shoppingListDTO.setUserId(shoppingList.getUserId());
+            shoppingListDTO.setTotalPrice(shoppingList.getTotalPrice());
+			shoppingListDTO.setShoppingList(shoppingList.getShoppingList());
 		}
 		return shoppingListDTO;
 	}
@@ -24,10 +24,10 @@ public class ConverterShoppingList {
 		ShoppingList shoppingList = null;
 		if (shoppingListDTO != null) {
 			shoppingList = new ShoppingList();
-      shoppingListDTO.setShoppingListId(shoppingList.getShoppingListId());
-			shoppingListDTO.setShoppingListUserId(shoppingList.getShoppingListUserId());
-      shoppingListDTO.setShoppingListTotalPrice(shoppingList.getShoppingListTotalPrice());
-			shoppingListDTO.setShoppingListShoppingList(shoppingList.getShoppingListShoppingList());
+			shoppingList.setShopListId(shoppingListDTO.getShoppingListId());;
+			shoppingList.setUserId(shoppingListDTO.getUserId());
+			shoppingList.setTotalPrice(shoppingListDTO.getTotalPrice());
+			shoppingList.setShoppingList(shoppingListDTO.getShoppingList());
 		}
 		return shoppingList;
 	}
@@ -36,7 +36,7 @@ public class ConverterShoppingList {
 		List<ShoppingListDTO> listShoppingListDTO = new ArrayList<>();
 		if (!list.isEmpty()) {
 			for (ShoppingList shoppingList : list) {
-				listUserDTO.add(ConverterUser.toDTO(shoppingList));
+				listShoppingListDTO.add(ConverterShoppingList.toDTO(shoppingList));
 			}
 		}
 		return listShoppingListDTO;
@@ -46,7 +46,7 @@ public class ConverterShoppingList {
 		List<ShoppingList> list = new ArrayList<>();
 		if (!listShoppingListDTO.isEmpty()) {
 			for (ShoppingListDTO shoppingListDTO : listShoppingListDTO) {
-				list.add(ConverterUser.toEntity(shoppingListDTO));
+				list.add(ConverterShoppingList.toEntity(shoppingListDTO));
 			}
 		}
 		return list;

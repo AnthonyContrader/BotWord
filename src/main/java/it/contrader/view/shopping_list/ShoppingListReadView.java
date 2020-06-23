@@ -27,7 +27,7 @@ public class ShoppingListReadView implements View {
 	public void showOptions() {
 		int shoppingListsIdToRead;
 
-		System.out.println("Inserisci l'ID del prodotto:");
+		System.out.println("Inserisci l'ID dell'ordine:");
 
 		try {
 			shoppingListsIdToRead = Integer.parseInt(getInput());

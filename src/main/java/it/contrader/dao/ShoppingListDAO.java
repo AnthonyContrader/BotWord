@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import it.contrader.controller.GestoreEccezioni;
 import it.contrader.main.ConnectionSingleton;
@@ -16,10 +18,11 @@ public class ShoppingListDAO {
 	private final String QUERY_INSERT = "insert into shopping_lists (user_id, total_price, shopping_list) values (?,?, ?)";
 	private final String QUERY_READ = "select * from shopping_lists where shopping_list_id=?";
 
-	private final String QUERY_UPDATE = "UPDATE shopping_lists SET total_price=?, shopping_list=? WHERE shopping_list_id=?";
+	private final String QUERY_UPDATE = "UPDATE shopping_lists SET user_id = ?, total_price=?, shopping_list=? WHERE shopping_list_id=?";
 	private final String QUERY_DELETE = "delete from user where shopping_list_id=?";
 
-	public ShoppingListDAO() {}
+	public ShoppingListDAO() {
+	}
 
 	public List<ShoppingList> getAllShoppingLists() {
 		List<ShoppingList> shoppingsLists = new ArrayList<>();
@@ -27,31 +30,35 @@ public class ShoppingListDAO {
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
-			ShoppingList ShoppingLists;
 			while (resultSet.next()) {
 				int shoppingListId = resultSet.getInt("shopping_list_id");
-				int userId= resultSet.getInt("user_id");
-				Double totalPrice = resultSet.getString("total_price");
-        JSONObject shoppingList =  resultSet.getShoppingList("shopping_list");
-				shoppingList = new ShoppingList(userId, totalPrice, shoppingList);
-				shoppingLists.setShoppingListId(shoppingListId);
-				shoppingListsList.add(shoppingList);
+				int userId = resultSet.getInt("user_id");
+				Double totalPrice = resultSet.getDouble("total_price");
+				String jsonString = resultSet.getString("shopping_list");
+				JSONObject json = toJsonObject(jsonString);
+				ShoppingList shoppingList = new ShoppingList(userId, json, totalPrice);
+				shoppingList.setShopListId(shoppingListId);
+				shoppingsLists.add(shoppingList);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return shoppingLists;
+		return shoppingsLists;
 	}
 
 	public boolean insertShoppingList(ShoppingList shoppingList) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, shoppingList.getUserId());
-      preparedStatement.setString(3, shoppingList.getTotalPrice());
-			preparedStatement.setString(3, shoppingList.getShoppingList());
-			preparedStatement.execute();
+			preparedStatement.setInt(1, shoppingList.getUserId());
+			preparedStatement.setDouble(2, shoppingList.getTotalPrice());
+			preparedStatement.setString(3, shoppingList.getShoppingList().toString());
+			int affectedRows = preparedStatement.executeUpdate();
+			if(affectedRows > 0) {
 			return true;
+			}
+			else
+				return false;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return false;
@@ -65,17 +72,20 @@ public class ShoppingListDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1, shoppingListId);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			resultSet.next();
-      int userId;
-      Double totalPrice;
-      JSONObject shoppingList;
-
-			userId = resultSet.getInt("user_id");
-			Double resultSet.getString("total_price");
-			ShoppingList shoppingList = new ShoppingList(userId, totalPrice, shoppingList);
-			user.setShoppingListId(resultSet.getInt("shopping_list_id"));
-
-			return shoppingList;
+			if(resultSet.next()) {
+				String jsonString;
+				int userId;
+				Double price;
+				userId = resultSet.getInt("user_id");
+				price = resultSet.getDouble("total_price");
+				jsonString = resultSet.getString("shopping_list");
+				JSONObject json = toJsonObject(jsonString);
+				ShoppingList shoppingList = new ShoppingList(userId, json, price);
+				shoppingList.setShopListId(shoppingListId);
+				return shoppingList;
+			}
+			else
+			return null;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;
@@ -87,30 +97,31 @@ public class ShoppingListDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (shoppingListToUpdate.getShoppingListId() == 0)
+		if (shoppingListToUpdate.getShopListId() == 0)
 			return false;
 
-		ShoppingList shoppingListRead = readShoppingList(userToUpdate.getShoppingListId());
-		if (!ShoppingListRead.equals(shoppingListToUpdate)) {
+		ShoppingList shoppingListRead = readShoppingList(shoppingListToUpdate.getShopListId());
+		if (!shoppingListRead.equals(shoppingListToUpdate)) {
 			try {
 				// Fill the userToUpdate object
-				if (shoppingListToUpdate.getUserId() == null || shoppingListToUpdate.getUserId().equals("")) {
+				if (shoppingListToUpdate.getUserId() < 0) {
 					shoppingListToUpdate.setUserId(shoppingListRead.getUserId());
 				}
 
-        if (shoppingListToUpdate.getShoppingList() == null || shoppingListToUpdate.getShoppingList().equals("")) {
-					shoppingListToUpdate.setTShoppingList(shoppingListRead.getTShoppingList());
+				if (shoppingListToUpdate.getShoppingList() == null || shoppingListToUpdate.getShoppingList().toString().equals("{}")) {
+					shoppingListToUpdate.setShoppingList(shoppingListRead.getShoppingList());
 				}
 
-				if (shoppingListToUpdate.getTotalPrice() == null || shoppingListToUpdate.getTotalPrice().equals("")) {
+				if (shoppingListToUpdate.getTotalPrice() == null || shoppingListToUpdate.getTotalPrice() < 0.0) {
 					shoppingListToUpdate.setTotalPrice(shoppingListRead.getTotalPrice());
 				}
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setObject(1, shoppingListToUpdate.getShoppingList());
-				preparedStatement.setDouble(3, shoppingListToUpdate.getTotalPrice());
-				preparedStatement.setInt(4, shoppingListToUpdate.getUserId());
+				preparedStatement.setInt(1, shoppingListToUpdate.getUserId());
+				preparedStatement.setDouble(2, shoppingListToUpdate.getTotalPrice());
+				preparedStatement.setString(3, shoppingListToUpdate.getShoppingList().toString());
+				preparedStatement.setInt(4, shoppingListToUpdate.getShopListId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
@@ -137,5 +148,16 @@ public class ShoppingListDAO {
 		} catch (SQLException e) {
 		}
 		return false;
+	}
+
+	public JSONObject toJsonObject(String jsonString) {
+		JSONParser parser = new JSONParser();
+		JSONObject json = new JSONObject();
+		try {
+			json = (JSONObject) parser.parse(jsonString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return json;
 	}
 }

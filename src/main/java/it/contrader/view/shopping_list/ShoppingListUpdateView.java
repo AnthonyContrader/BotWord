@@ -3,11 +3,15 @@ package it.contrader.view.shopping_list;
 import java.util.List;
 import java.util.Scanner;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import it.contrader.controller.Request;
 import it.contrader.controller.ShoppingListController;
 import it.contrader.dto.ShoppingListDTO;
-  import it.contrader.model.ShoppingListItem;
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.ShoppingList;
 import it.contrader.view.View;
 
 public class ShoppingListUpdateView implements View {
@@ -25,8 +29,8 @@ public class ShoppingListUpdateView implements View {
 	@Override
 	public void showOptions() {
 		int shoppingListIdToUpdate;
-    Double totalPrice;
-    ArrayList<ShoppingItem> shoppingList;
+    String totalPrice;
+    String shoppingList;
 
 		System.out.println("\n----- Seleziona l'ordine da modificate  -----\n");
 
@@ -37,11 +41,17 @@ public class ShoppingListUpdateView implements View {
 			shoppingListIdToUpdate = Integer.parseInt(getInput());
 			if (shoppingListIdToUpdate != 0) {
 				shoppingListDTO.setShoppingListId(shoppingListIdToUpdate);
+				
+				System.out.println("Digita il nuovo User ID: ");
+				String userId = getInput();
+				shoppingListDTO.setUserId(Integer.parseInt(userId));
 
         System.out.println("Digita la nuova lista dei prodotti:");
         shoppingList = getInput();
-        if (!shoppingList.equals(""))
-        shoppingListDTO.setShoppingList(shoppingList);
+        if (!shoppingList.equals("")) {
+        	JSONObject json = toJsonObject(shoppingList);
+        shoppingListDTO.setShoppingList(json);
+        }
 
 				System.out.println("Digita il nuovo prezzo dell'ordine:");
 				totalPrice = getInput();
@@ -69,5 +79,16 @@ public class ShoppingListUpdateView implements View {
 		request.put("mode", "menu");
 		request.put("choice", "");
 		MainDispatcher.getInstance().callAction("ShoppingList", "doControl", request);
+	}
+	
+	public JSONObject toJsonObject(String jsonString) {
+		JSONParser parser = new JSONParser();
+		JSONObject json = new JSONObject();
+		try {
+			json = (JSONObject) parser.parse(jsonString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return json;
 	}
 }
