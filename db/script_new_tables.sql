@@ -19,6 +19,7 @@ CREATE TABLE products (
   description varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   quantity int(11) NOT NULL,
   price double(10,2) NOT NULL,
+  category varchar(25) NOT NULL,
   PRIMARY KEY (prod_id)
 );
 
