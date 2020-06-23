@@ -4,36 +4,35 @@ import java.util.List;
 import java.util.Scanner;
 
 import it.contrader.controller.Request;
-import it.contrader.controller.UserController;
+import it.contrader.controller.ShoppingListController;
 import it.contrader.main.MainDispatcher;
-import it.contrader.model.User;
+import it.contrader.model.ShoppingList;
 
-public class UserView implements View {
+public class ShoppingListView implements View {
 
-	private UserController usersController;
+	private ShoppingListController shoppingListsController;
 	private Request request;
 	private String choice;
-	
-	public UserView() {
-		this.usersController = new UserController();
+
+	public ShoppingListView() {
+		this.shoppingListsController = new ShoppingListController();
 	}
 
 	@Override
-	public void showResults(Request request) {
-	}
+	public void showResults(Request request) {}
 
 	@Override
 	public void showOptions() {
-		
-		System.out.println("\n------ Gestione Utenti -------\n");
-		
-		System.out.println("ID\tUsername\tTipoUtente");
+
+		System.out.println("\n------ Gestione Ordini -------\n");
+
+		System.out.println("ID\tUserId\tPrezzoTotale\tListaProdotti");
 		System.out.print("------------------------------------------------------");
-		List<User> users = usersController.getAllUser();
+		List<ShoppingList> shoppingLists = shoppingListsController.getAllShoppingList();
 		System.out.println();
-		users.forEach(user -> System.out.println(user.toString()));
+		shoppingLists.forEach(shoppingList -> System.out.println(shoppingList.toString()));
 		System.out.println();
-		
+
 		System.out.println("Scegli l'operazione da effettuare:");
 		System.out.println("[L]eggi [I]nserisci [M]odifica [C]ancella [E]sci");
 		try {
@@ -54,7 +53,6 @@ public class UserView implements View {
 
 	@Override
 	public void submit() {
-		    MainDispatcher.getInstance().callAction("User", "doControl", this.request);
+		    MainDispatcher.getInstance().callAction("ShoppingList", "doControl", this.request);
 	}
-
 }

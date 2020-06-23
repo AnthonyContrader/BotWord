@@ -34,7 +34,7 @@ public class UserDeleteView implements View {
 		//System.out.println();
 		//user.forEach(user -> System.out.println(user));
 		//System.out.println();
-		//System.out.println("Digita l'ID:");
+		System.out.println("Digita l'ID:");
 		String usersId = getInput();
 
 		if (usersId != null && StringUtils.isStrictlyNumeric(usersId)) {
