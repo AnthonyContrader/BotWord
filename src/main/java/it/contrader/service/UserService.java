@@ -5,9 +5,8 @@ import java.util.List;
 import it.contrader.converter.ConverterUser;
 import it.contrader.dao.UserDAO;
 import it.contrader.dto.UserDTO;
-import it.contrader.model.User;
 
-public class UserService {
+public class UserService implements Service<UserDTO>{
 
 	private UserDAO userDAO;
 
@@ -15,23 +14,23 @@ public class UserService {
 		this.userDAO = new UserDAO();
 	}
 
-	public List<User> getAllUser() {
-		return this.userDAO.getAll();
+	public List<UserDTO> getAll() {
+		return ConverterUser.toListDTO(userDAO.getAll());
 	}
 
-	public boolean insertUser(UserDTO userDTO) {
+	public boolean insert(UserDTO userDTO) {
 		return this.userDAO.insert(ConverterUser.toEntity(userDTO));
 	}
 
-	public UserDTO readUser(int userId) {
+	public UserDTO read(int userId) {
 		return ConverterUser.toDTO(this.userDAO.read(userId));
 	}
 
-	public boolean updateUser(UserDTO userDTO) {
+	public boolean update(UserDTO userDTO) {
 		return this.userDAO.update(ConverterUser.toEntity(userDTO));
 	}
 
-	public boolean deleteUser(int userId) {
+	public boolean delete(int userId) {
 		return this.userDAO.delete(userId);
 	}
 
