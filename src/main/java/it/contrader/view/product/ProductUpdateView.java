@@ -20,8 +20,7 @@ public class ProductUpdateView implements View {
 	}
 
 	@Override
-	public void showResults(Request request) {
-	}
+	public void showResults(Request request) {}
 
 	@Override
 	public void showOptions() {
@@ -63,7 +62,7 @@ public class ProductUpdateView implements View {
 				upprice = getInput();
 				if (!upprice.equals(""))
 					productDTO.setPrice(Double.parseDouble(upprice));
-				
+
 				System.out.println("Digita la nuova categoria del prodotto");
 				upCategory = getInput();
 				if(!upCategory.equals(""))
