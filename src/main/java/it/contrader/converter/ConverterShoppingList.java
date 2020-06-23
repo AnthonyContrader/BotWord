@@ -3,7 +3,7 @@ package it.contrader.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.contrader.dto.ShoppingListbDTO;
+import it.contrader.dto.ShoppingListDTO;
 import it.contrader.model.ShoppingList;
 
 public class ConverterShoppingList {
