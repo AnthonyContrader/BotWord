@@ -20,7 +20,20 @@ public class User {
 		this.surname = surname;
 		this.address = address;
 	}
-
+	
+	public User(int userId, String username, String password, String userType) {
+		this.userId = userId;
+		this.username = username;
+		this.userPassword = password;
+		this.usertype = userType;
+	}
+	
+	public User(String username, String password, String userType) {
+		this.username = username;
+		this.userPassword = password;
+		this.usertype = userType;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}

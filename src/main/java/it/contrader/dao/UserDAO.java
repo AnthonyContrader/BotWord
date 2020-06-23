@@ -38,7 +38,7 @@ public class UserDAO implements DAO<User> {
 				String password = resultSet.getString("password");
 				String usertype = resultSet.getString("usertype");
 				user = new User(username, password, usertype);
-				user.setId(id);
+				user.setUserId(id);
 				usersList.add(user);
 			}
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class UserDAO implements DAO<User> {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setString(1, userToInsert.getUsername());
-			preparedStatement.setString(2, userToInsert.getPassword());
+			preparedStatement.setString(2, userToInsert.getUserPassword());
 			preparedStatement.setString(3, userToInsert.getUsertype());
 			preparedStatement.execute();
 			return true;
@@ -77,7 +77,7 @@ public class UserDAO implements DAO<User> {
 			password = resultSet.getString("password");
 			usertype = resultSet.getString("usertype");
 			User user = new User(username, password, usertype);
-			user.setId(resultSet.getInt("id"));
+			user.setUserId(resultSet.getInt("id"));
 
 			return user;
 		} catch (SQLException e) {
@@ -90,10 +90,10 @@ public class UserDAO implements DAO<User> {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (userToUpdate.getId() == 0)
+		if (userToUpdate.getUserId() == 0)
 			return false;
 
-		User userRead = read(userToUpdate.getId());
+		User userRead = read(userToUpdate.getUserId());
 		if (!userRead.equals(userToUpdate)) {
 			try {
 				// Fill the userToUpdate object
@@ -101,8 +101,8 @@ public class UserDAO implements DAO<User> {
 					userToUpdate.setUsername(userRead.getUsername());
 				}
 
-				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("")) {
-					userToUpdate.setPassword(userRead.getPassword());
+				if (userToUpdate.getUserPassword() == null || userToUpdate.getUserPassword().equals("")) {
+					userToUpdate.setUserPassword(userRead.getUserPassword());
 				}
 
 				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
@@ -112,9 +112,9 @@ public class UserDAO implements DAO<User> {
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, userToUpdate.getUsername());
-				preparedStatement.setString(2, userToUpdate.getPassword());
+				preparedStatement.setString(2, userToUpdate.getUserPassword());
 				preparedStatement.setString(3, userToUpdate.getUsertype());
-				preparedStatement.setInt(4, userToUpdate.getId());
+				preparedStatement.setInt(4, userToUpdate.getUserId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
