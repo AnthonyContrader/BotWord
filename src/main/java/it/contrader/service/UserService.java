@@ -15,7 +15,7 @@ public class UserService {
 		this.userDAO = new UserDAO();
 	}
 
-	public List<User> getAll() {
+	public List<User> getAllUser() {
 		return this.userDAO.getAll();
 	}
 
@@ -23,15 +23,15 @@ public class UserService {
 		return this.userDAO.insert(ConverterUser.toEntity(userDTO));
 	}
 
-	public UserDTO read(int userId) {
+	public UserDTO readUser(int userId) {
 		return ConverterUser.toDTO(this.userDAO.read(userId));
 	}
 
-	public boolean update(UserDTO userDTO) {
+	public boolean updateUser(UserDTO userDTO) {
 		return this.userDAO.update(ConverterUser.toEntity(userDTO));
 	}
 
-	public boolean delete(int userId) {
+	public boolean deleteUser(int userId) {
 		return this.userDAO.delete(userId);
 	}
 

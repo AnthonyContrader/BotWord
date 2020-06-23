@@ -28,6 +28,12 @@ public class UserDTO {
 		this.userPassword = password;
 		this.usertype = userType;
 	}
+	
+	public UserDTO(String username, String password, String userType) {
+		this.username = username;
+		this.userPassword = password;
+		this.usertype = userType;
+	}
 
 	public int getUserId() {
 		return userId;
