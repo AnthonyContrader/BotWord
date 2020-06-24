@@ -17,24 +17,24 @@ public class ProductController implements Controller {
 		this.productsService = new ProductService();
 	}
 
-	public List<Product> getAllProduct() {
-		return this.productsService.getAllProduct();
+	public List<ProductDTO> getAllProduct() {
+		return this.productsService.getAll();
 	}
 
 	public ProductDTO readProduct(int prodId) {
-		return this.productsService.findByID(prodId);
+		return this.productsService.read(prodId);
 	}
 
 	public boolean insertProduct(ProductDTO productsDTO) {
-		return this.productsService.insertProduct(productsDTO);
+		return this.productsService.insert(productsDTO);
 	}
 
 	public boolean updateProduct(ProductDTO productsDTO) {
-		return this.productsService.updateProduct(productsDTO);
+		return this.productsService.update(productsDTO);
 	}
 
 	public boolean deleteProduct(Integer productsId) {
-		return this.productsService.deleteProduct(productsId);
+		return this.productsService.delete(productsId);
 	}
 
 	@Override

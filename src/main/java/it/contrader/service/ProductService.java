@@ -5,9 +5,8 @@ import java.util.List;
 import it.contrader.converter.ConverterProduct;
 import it.contrader.dao.ProductDAO;
 import it.contrader.dto.ProductDTO;
-import it.contrader.model.Product;
 
-public class ProductService {
+public class ProductService implements Service<ProductDTO>{
 	
 	private ProductDAO prodDAO;
 	
@@ -15,23 +14,23 @@ public class ProductService {
 		this.prodDAO = new ProductDAO();
 	}
 	
-	public List<Product> getAllProduct(){
-		return this.prodDAO.getAllProducts();
+	public List<ProductDTO> getAll(){
+		return ConverterProduct.toListDTO(this.prodDAO.getAllProducts());
 	}
 	
-	public boolean insertProduct(ProductDTO prodDTO){
+	public boolean insert(ProductDTO prodDTO){
 		return this.prodDAO.insertProduct(ConverterProduct.toEntity(prodDTO));
 	}
 	
-	public ProductDTO findByID(int prodId){
+	public ProductDTO read(int prodId){
 		return ConverterProduct.toDTO(this.prodDAO.findById(prodId));
 	}
 	
-	public boolean updateProduct(ProductDTO prodDTO){
+	public boolean update(ProductDTO prodDTO){
 		return this.prodDAO.updateProduct(ConverterProduct.toEntity(prodDTO));
 	}
 	
-	public boolean deleteProduct(int prodId){
+	public boolean delete(int prodId){
 		return this.prodDAO.deleteProduct(prodId);
 	}	
 }
