@@ -17,7 +17,7 @@ import it.contrader.model.User;
  */
 public class LoginDAO {
 
-	private final String QUERY_LOGIN = "SELECT * FROM user WHERE username = ? AND password = ?";
+	private final String QUERY_LOGIN = "SELECT * FROM users WHERE user_user = ? AND user_password = ?";
 
 
 	public User login (String username, String password) {
@@ -30,13 +30,11 @@ public class LoginDAO {
 			statement.setString(2, password);
 
 
-			ResultSet resultSet;
+			ResultSet resultSet = statement.executeQuery();
 
-			if(statement.executeQuery().next()) {
-				resultSet = statement.executeQuery();
-				resultSet.next();
-				String usertype = resultSet.getString("usertype");
-				int id = resultSet.getInt("id");
+			if(resultSet.next()) {
+				String usertype = resultSet.getString("user_type");
+				int id = resultSet.getInt("user_id");
 				User user = new User(id, username, password, usertype);
 
 				return user;
@@ -46,7 +44,7 @@ public class LoginDAO {
 		}
 
 		catch (SQLException e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
