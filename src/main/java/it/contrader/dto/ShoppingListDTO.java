@@ -6,7 +6,7 @@ public class ShoppingListDTO {
 
   private int shoppingListId;
 	private int userId;
-  private JSONObject shoppingList = new JSONObject();
+    private JSONObject shoppingList = new JSONObject();
 	private Double totalPrice;
 
 	public ShoppingListDTO() {}

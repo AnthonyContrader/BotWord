@@ -9,7 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import it.contrader.controller.GestoreEccezioni;
-import it.contrader.main.ConnectionSingleton;
+import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.ShoppingList;
 
 public class ShoppingListDAO {
@@ -19,7 +19,7 @@ public class ShoppingListDAO {
 	private final String QUERY_READ = "select * from shopping_lists where shopping_list_id=?";
 
 	private final String QUERY_UPDATE = "UPDATE shopping_lists SET user_id = ?, total_price=?, shopping_list=? WHERE shopping_list_id=?";
-	private final String QUERY_DELETE = "delete from user where shopping_list_id=?";
+	private final String QUERY_DELETE = "delete from shopping_lists where shopping_list_id=?";
 
 	public ShoppingListDAO() {
 	}

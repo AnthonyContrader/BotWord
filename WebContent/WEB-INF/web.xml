@@ -40,4 +40,12 @@
     <servlet-name>ProductsServlet</servlet-name>
     <url-pattern>/ProductsServlet</url-pattern>
   </servlet-mapping>
+ <servlet>
+  <servlet-name>ShoppingListServlet</servlet-name>
+<servlet-class>it.contrader.servlets.ShoppingListServlet</servlet-class>
+</servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingListServlet</servlet-name>
+    <url-pattern>/ShoppingListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

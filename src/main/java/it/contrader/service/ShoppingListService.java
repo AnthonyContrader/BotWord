@@ -4,10 +4,11 @@ import java.util.List;
 
 import it.contrader.converter.ConverterShoppingList;
 import it.contrader.dao.ShoppingListDAO;
+import it.contrader.dto.ProductDTO;
 import it.contrader.dto.ShoppingListDTO;
 import it.contrader.model.ShoppingList;
 
-public class ShoppingListService {
+public class ShoppingListService implements Service<ShoppingListDTO>{
 
 	private ShoppingListDAO shoppingListDAO;
 
@@ -15,23 +16,23 @@ public class ShoppingListService {
 		this.shoppingListDAO = new ShoppingListDAO();
 	}
 
-	public List<ShoppingList> getAllShoppingList() {
-		return this.shoppingListDAO.getAllShoppingLists();
+	public List<ShoppingListDTO> getAll() {
+		return ConverterShoppingList.toListDTO(this.shoppingListDAO.getAllShoppingLists()) ;
 	}
 
-	public boolean insertShoppingList(ShoppingListDTO shoppingListDTO) {
+	public boolean insert(ShoppingListDTO shoppingListDTO) {
 		return this.shoppingListDAO.insertShoppingList(ConverterShoppingList.toEntity(shoppingListDTO));
 	}
 
-	public ShoppingListDTO readShoppingList(int shoppingListId) {
+	public ShoppingListDTO read(int shoppingListId) {
 		return ConverterShoppingList.toDTO(this.shoppingListDAO.readShoppingList(shoppingListId));
 	}
 
-	public boolean updateShoppingList(ShoppingListDTO shoppingListDTO) {
+	public boolean update(ShoppingListDTO shoppingListDTO) {
 		return this.shoppingListDAO.updateShoppingList(ConverterShoppingList.toEntity(shoppingListDTO));
 	}
 
-	public boolean deleteShoppingList(int shoppingListId) {
+	public boolean delete(int shoppingListId) {
 		return this.shoppingListDAO.deleteShoppingList(shoppingListId);
 	}
 }
