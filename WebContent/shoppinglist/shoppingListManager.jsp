@@ -52,40 +52,6 @@
 		%>
 	</table>
 
-
-
-<form id="floatright" action="ShoppingListServlet?mode=insert" method="post">
-  <div class="row">
-    <div class="col-25">
-      <label for="shoppingList">UserId</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="user" name="userId" placeholder="inserisci user id">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-     <label for="pass">ShoppingList</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="shoppingList" name="shoppingList" placeholder="inserisci lista prodotti">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="type">TotalPrice</label>
-    </div>
-   		 <div class="col-75">
- 			<select id="price" name="totalPrice">
-        <input type="text" id="price" name="totalPrice" placeholder="inserisci prezzo">
-
-			</select>
-    	</div>
-  </div>
-      <button type="submit" >Insert</button>
-</form>
-
-</div>
 <br>
 <%@ include file="../css/footer.jsp" %>
 </body>
