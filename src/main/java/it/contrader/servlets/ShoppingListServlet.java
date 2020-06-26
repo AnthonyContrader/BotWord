@@ -86,7 +86,6 @@ public class ShoppingListServlet extends HttpServlet {
 			break;
 
 		case "UPDATE":
-			//supponiamo solo aggiunta di un prodotto nuovo
 			prodID = request.getParameter("prodID").toString();
 			price = Double.parseDouble(request.getParameter("prezzo").toString());
 			dto = (ShoppingListDTO) session.getAttribute("ordine");
@@ -122,8 +121,12 @@ public class ShoppingListServlet extends HttpServlet {
 			ans = service.update(dto);
 			updateList(request);
 			request.setAttribute("dto", dto);
+			if(userDto.getUsertype().equals("user"))
 			getServletContext().getRequestDispatcher("/shoppinglist/readShoppingListUser.jsp").forward(request,
 					response);
+			else
+				getServletContext().getRequestDispatcher("/shoppinglist/readShoppingList.jsp").forward(request,
+						response);
 			break;
 
 		case "DELETE":
