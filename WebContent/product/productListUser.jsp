@@ -31,7 +31,6 @@
 				<th>Quantità</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
-				<th></th>
 			</tr>
 			<%
 				for (ProductDTO prodDto : list) {

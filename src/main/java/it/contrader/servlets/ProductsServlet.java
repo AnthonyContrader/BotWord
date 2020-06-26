@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.contrader.dto.ProductDTO;
+import it.contrader.dto.ShoppingListDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.ProductService;
 import it.contrader.service.Service;
+import it.contrader.service.IShoppingListService;
+import it.contrader.service.ShoppingListService;
 
 public class ProductsServlet extends HttpServlet {
 	
@@ -25,6 +28,7 @@ public class ProductsServlet extends HttpServlet {
 		Service<ProductDTO> service = new ProductService();
 		List<ProductDTO> listDto = service.getAll();
 		request.setAttribute("list", listDto);
+		
 	}
 	
 	@Override
@@ -35,6 +39,9 @@ public class ProductsServlet extends HttpServlet {
 		final HttpSession session = request.getSession();
 		UserDTO userDto = (UserDTO) session.getAttribute("user");
 		ProductDTO prodDto;
+		IShoppingListService<ShoppingListDTO> serviceShop = new ShoppingListService();
+		ShoppingListDTO slExisting = serviceShop.findByUserId(userDto.getUserId());
+		session.setAttribute("ordine", slExisting);
 		int id;
 		boolean ans;
 		if(userDto.getUsertype().equals("user")) {
@@ -48,7 +55,13 @@ public class ProductsServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			prodDto = service.read(id);
 			request.setAttribute("dto", prodDto);
-			getServletContext().getRequestDispatcher("/product/readProduct.jsp").forward(request, response);
+			if(slExisting == null) {
+				getServletContext().getRequestDispatcher("/product/readProductForNewOrder.jsp").forward(request, response);
+			}
+			else {
+				request.setAttribute("dto", prodDto);
+				getServletContext().getRequestDispatcher("/product/readProductForUpdateOrder.jsp").forward(request, response);
+			}
 			break;
 		}
 		}

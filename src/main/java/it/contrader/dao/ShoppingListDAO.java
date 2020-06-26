@@ -20,6 +20,7 @@ public class ShoppingListDAO {
 
 	private final String QUERY_UPDATE = "UPDATE shopping_lists SET user_id = ?, total_price=?, shopping_list=? WHERE shopping_list_id=?";
 	private final String QUERY_DELETE = "delete from shopping_lists where shopping_list_id=?";
+	private final String FIND_BY_USERID = "select * from shopping_lists where user_id = ?";
 
 	public ShoppingListDAO() {
 	}
@@ -148,6 +149,33 @@ public class ShoppingListDAO {
 		} catch (SQLException e) {
 		}
 		return false;
+	}
+	
+	public ShoppingList findByUserId(int userId) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_USERID);
+			preparedStatement.setInt(1, userId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				String jsonString;
+				Double price;
+				int shoppingListId;
+				shoppingListId = resultSet.getInt("shopping_list_id");
+				userId = resultSet.getInt("user_id");
+				price = resultSet.getDouble("total_price");
+				jsonString = resultSet.getString("shopping_list");
+				JSONObject json = toJsonObject(jsonString);
+				ShoppingList shoppingList = new ShoppingList(userId, json, price);
+				shoppingList.setShopListId(shoppingListId);
+				return shoppingList;
+			}
+			else
+			return null;
+		} catch (SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return null;
+		}
 	}
 
 	public JSONObject toJsonObject(String jsonString) {

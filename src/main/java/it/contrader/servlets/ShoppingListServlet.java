@@ -7,9 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
 
 import it.contrader.converter.ConverterStringToJson;
 import it.contrader.dto.ShoppingListDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.Service;
 import it.contrader.service.ShoppingListService;
 
@@ -30,6 +34,8 @@ public class ShoppingListServlet extends HttpServlet {
 		Service<ShoppingListDTO> service = new ShoppingListService();
 		String mode = request.getParameter("mode");
 		ShoppingListDTO dto;
+		final HttpSession session = request.getSession();
+		UserDTO userDto = (UserDTO) session.getAttribute("user");
 		int id;
 		boolean ans;
 
@@ -59,27 +65,57 @@ public class ShoppingListServlet extends HttpServlet {
 			break;
 
 		case "INSERT":
-			String userId = request.getParameter("userId").toString();
-			String shoppingList = request.getParameter("shoppingList").toString();
-			String totalPrice = request.getParameter("totalPrice").toString();
-			dto = new ShoppingListDTO(Integer.parseInt(userId), ConverterStringToJson.toJsonObject(shoppingList), Double.parseDouble(totalPrice));
+			Integer userId = userDto.getUserId();
+			String prodID = request.getParameter("prodID").toString();
+			String quantity = request.getParameter("quantity");
+			String shoppingList = "{\""+ prodID +"\":\"" +quantity +"\"}";
+			Double price = Double.parseDouble(request.getParameter("prezzo").toString());
+			Double totalPrice = price * Double.parseDouble(quantity);
+			dto = new ShoppingListDTO(userId, ConverterStringToJson.toJsonObject(shoppingList), totalPrice);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
+			if(userDto.getUsertype().equals("admin"))
 			getServletContext().getRequestDispatcher("/shoppinglist/shoppingListManager.jsp").forward(request,
 					response);
+			else {
+				request.setAttribute("dto", dto);
+				getServletContext().getRequestDispatcher("/shoppinglist/readShoppingListUser.jsp").forward(request,
+						response);
+			}
 			break;
 
 		case "UPDATE":
-			userId = request.getParameter("userId");
-			shoppingList = request.getParameter("shoppingList");
-			totalPrice = request.getParameter("totalPrice");
+			//supponiamo solo aggiunta di un prodotto nuovo
+			prodID = request.getParameter("prodID").toString();
+			price = Double.parseDouble(request.getParameter("prezzo").toString());
+			dto = (ShoppingListDTO) session.getAttribute("ordine");
+			JSONObject jsonShoppingList = dto.getShoppingList();
+			userId = userDto.getUserId();
+			Double totalPriceOld = dto.getTotalPrice();
 			id = Integer.parseInt(request.getParameter("id"));
-			dto = new ShoppingListDTO(Integer.parseInt(userId), ConverterStringToJson.toJsonObject(shoppingList), Double.parseDouble(totalPrice));
-			dto.setShoppingListId(id);
+			quantity = request.getParameter("quantity");
+			Integer quant = Integer.parseInt(quantity);
+			String quantOldstr = jsonShoppingList.get(prodID).toString();
+			Integer quantOld = Integer.parseInt(quantOldstr);
+			if(quant == quantOld) {
+				dto.setTotalPrice(totalPriceOld);
+			}
+			else {
+				if(quant > quantOld) {
+					Double totalPriceNew = price * quant;
+					dto.setTotalPrice(totalPriceNew);
+				}else {
+					Double totalPriceNew = totalPriceOld - price * (quantOld - quant);
+				    dto.setTotalPrice(totalPriceNew);
+				}
+			}
+			jsonShoppingList.put(prodID, quantity);
+			dto.setShoppingList(jsonShoppingList);
 			ans = service.update(dto);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/shoppinglist/shoppingListManager.jsp").forward(request,
+			request.setAttribute("dto", dto);
+			getServletContext().getRequestDispatcher("/shoppinglist/readShoppingListUser.jsp").forward(request,
 					response);
 			break;
 

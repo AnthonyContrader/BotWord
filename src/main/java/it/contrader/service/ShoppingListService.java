@@ -8,7 +8,7 @@ import it.contrader.dto.ProductDTO;
 import it.contrader.dto.ShoppingListDTO;
 import it.contrader.model.ShoppingList;
 
-public class ShoppingListService implements Service<ShoppingListDTO>{
+public class ShoppingListService implements IShoppingListService<ShoppingListDTO>{
 
 	private ShoppingListDAO shoppingListDAO;
 
@@ -34,5 +34,9 @@ public class ShoppingListService implements Service<ShoppingListDTO>{
 
 	public boolean delete(int shoppingListId) {
 		return this.shoppingListDAO.deleteShoppingList(shoppingListId);
+	}
+	
+	public ShoppingListDTO findByUserId(int userId) {
+		return ConverterShoppingList.toDTO(this.shoppingListDAO.findByUserId(userId));
 	}
 }
