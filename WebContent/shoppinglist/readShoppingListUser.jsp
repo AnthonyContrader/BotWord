@@ -29,7 +29,7 @@
 	<tr>
 		<td><%=sl.getUserId()%></td>
 		<td> <%=sl.getShoppingList()%></td>
-		<td> <%=sl.getTotalPrice()%></td>
+		<td> <%=sl.getTotalPrice().toString()%></td>
 	</tr>
 </table>
 
