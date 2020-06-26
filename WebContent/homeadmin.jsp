@@ -16,6 +16,7 @@
   <a class="active" href="homeadmin.jsp">Home</a>
   <a href="UserServlet?mode=userlist">Users</a>
   <a href="ShoppingListServlet?mode=shoppinglistlist">Visualizza la lista ordini</a>
+  <a href="ProductsServlet?mode=productslist">Prodotti</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 

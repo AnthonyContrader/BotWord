@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import = "it.contrader.dto.ProductDTO"%>
+	pageEncoding="ISO-8859-1" import = "it.contrader.dto.ProductDTO"
+	import = "it.contrader.dto.UserDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +11,10 @@
 <body>
 
 	<%@ include file="../css/header.jsp"%>
-
+	<%UserDTO userDto = (UserDTO)session.getAttribute("user"); %>
+	
 	<div class="navbar">
-		<a href="homeadmin.jsp">Home</a> 
+		<a href="home<%=userDto.getUsertype()%>.jsp">Home</a>
 		<a href="LogoutServlet" id="logout">Logout</a>
 	</div>
 
