@@ -48,7 +48,7 @@ public class ProductsServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			prodDto = service.read(id);
 			request.setAttribute("dto", prodDto);
-			getServletContext().getRequestDispatcher("/product/readProduct.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/product/userReadProduct.jsp").forward(request, response);
 			break;
 		}
 		}
