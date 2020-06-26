@@ -96,6 +96,8 @@ public class ShoppingListServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			quantity = request.getParameter("quantity");
 			Integer quant = Integer.parseInt(quantity);
+			Double totalPriceNew = totalPriceOld;
+			if(jsonShoppingList.containsKey(prodID)){
 			String quantOldstr = jsonShoppingList.get(prodID).toString();
 			Integer quantOld = Integer.parseInt(quantOldstr);
 			if(quant == quantOld) {
@@ -103,12 +105,17 @@ public class ShoppingListServlet extends HttpServlet {
 			}
 			else {
 				if(quant > quantOld) {
-					Double totalPriceNew = price * quant;
+					totalPriceNew += price * quant;
 					dto.setTotalPrice(totalPriceNew);
 				}else {
-					Double totalPriceNew = totalPriceOld - price * (quantOld - quant);
+					totalPriceNew = totalPriceOld - price * (quantOld - quant);
 				    dto.setTotalPrice(totalPriceNew);
 				}
+			}
+			}
+			else {
+				totalPriceNew = totalPriceOld + price * quant;
+				dto.setTotalPrice(totalPriceNew);
 			}
 			jsonShoppingList.put(prodID, quantity);
 			dto.setShoppingList(jsonShoppingList);
