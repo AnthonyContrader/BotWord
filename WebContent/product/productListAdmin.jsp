@@ -41,7 +41,7 @@
 					href="ProductsServlet?mode=read&id=<%=prodDto.getProdId()%>"> <%=prodDto.getName()%></a>
 				</td>
 				<td><%=prodDto.getQuantity()%></td>
-				<td><%=prodDto.getPrice()%></td>
+				<td><%=prodDto.getPrice().toString()%></td>
 				<td><%=prodDto.getCategory()%></td>
 				<td><a href=ProductsServlet?mode=read&update=true&id=<%=prodDto.getProdId()%>>Edit</a></td>
 				<td><a href=ProductsServlet?mode=delete&id=<%=prodDto.getProdId()%>>Delete</a>

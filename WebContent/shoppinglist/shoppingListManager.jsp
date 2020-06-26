@@ -40,7 +40,7 @@
 					<%=u.getUserId()%>
 			</a></td>
 			<td><%=u.getShoppingList()%></td>
-			<td><%=u.getTotalPrice()%></td>
+			<td><%=u.getTotalPrice().toString()%></td>
 			<td><a href=ShoppingListServlet?mode=read&update=true&id=<%=u.getShoppingListId()%>>Edit</a>
 			</td>
 			<td><a href=ShoppingListServlet?mode=delete&id=<%=u.getShoppingListId()%>>Delete</a>
