@@ -13,7 +13,8 @@
 
 
 	<div class="navbar">
-		<a href="homeadmin.jsp">Home</a> 
+		<a href="homeuser.jsp">Home</a> 
+		<a class="active" href="ProductsServlet?mode=productslist">Prodotti</a>
 		<a href="LogoutServlet" id="logout">Logout</a>
 	</div>
 
@@ -28,7 +29,7 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Quantità</th>
+				<th>Disponibilit&agrave;</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
 			</tr>
