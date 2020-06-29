@@ -20,7 +20,7 @@
 <%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 
-<form id="floatleft" action="UserServlet?mode=update&id=<%=u.getId()%>" method="post">
+<form id="floatleft" action="UserServlet?mode=update&id=<%=u.getUserId()%>" method="post">
   <div class="row">
     <div class="col-25">
       <label for="user">Username</label>
@@ -35,7 +35,7 @@
     </div>
     <div class="col-75">
       <input
-			type="text" id="pass" name="password" value=<%=u.getPassword()%>> 
+			type="text" id="pass" name="password" value=<%=u.getUserPassword()%>> 
     </div>
   </div>
   <div class="row">

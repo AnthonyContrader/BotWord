@@ -22,14 +22,14 @@ public class UserServiceTest {
 	public void setUp() throws Exception {
 		userTest = new UserDTO("AdminTest", "admin", "password", "name", "surname", "address");
 		userService = new UserService();
-		userService.insertUser(userTest);
+		userService.insert(userTest);
 		userIdTest = TestUtils.getLastInsertedID("user");
 		userTest.setUserId(userIdTest);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		userService.deleteUser(userIdTest);
+		userService.delete(userIdTest);
 	}
 
 	@Test
@@ -37,31 +37,31 @@ public class UserServiceTest {
 		UserDTO userInsertTest = new UserDTO("insertTest","admin", "password", "name", "surname", "address");
 		
 		//userService.insertUser(userInsertTest);
-		boolean userInsertedCheck = userService.insertUser(userInsertTest);
+		boolean userInsertedCheck = userService.insert(userInsertTest);
 		
 		int userInsertTestId = TestUtils.getLastInsertedID("user");
-		userService.deleteUser(userInsertTestId);
+		userService.delete(userInsertTestId);
 		
 		Assert.assertTrue(userInsertedCheck);
 	}
 
 	@Test
 	public void testReadtUser() {
-		UserDTO DBuser=userService.readUser(userIdTest);
+		UserDTO DBuser=userService.read(userIdTest);
 		Assert.assertTrue(DBuser.equals(userTest));
 	}
 
 	@Test
 	public void testUpdateUser() {
 		userTest.setUsername("Usernamemodificata");
-		userService.updateUser(userTest);
-		UserDTO DBUser = userService.readUser(userIdTest);
+		userService.update(userTest);
+		UserDTO DBUser = userService.read(userIdTest);
 		Assert.assertTrue(DBUser.getUsername().equals("Usernamemodificata"));
 	}
 
 	@Test
 	public void testDeleteUser() {
-		userService.deleteUser(userIdTest);
+		userService.delete(userIdTest);
 	}
 
 }

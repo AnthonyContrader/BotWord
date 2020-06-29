@@ -28,7 +28,7 @@
 	</tr>
 	<tr>
 		<td><%=u.getUsername()%></td>
-		<td> <%=u.getPassword()%></td>
+		<td> <%=u.getUserPassword()%></td>
 		<td> <%=u.getUsertype()%></td>
 	</tr>	
 </table>

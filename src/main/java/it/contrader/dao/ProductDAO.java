@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.contrader.controller.GestoreEccezioni;
-import it.contrader.main.ConnectionSingleton;
+import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.Product;
 
 public class ProductDAO {
 
-	// VERIFICARE NOME TABELLA E TUTTI I CAMPI, IO LI STO IPOTIZZANDO
 
 	private final String FIND_ALL = "select * from products";
 	private final String FIND_BY_ID = "select * from products where prod_id = ?";
@@ -34,7 +33,7 @@ public class ProductDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			Product product;
 			while (resultSet.next()) {
-				int prodId = resultSet.getInt("prod_id"); // controllare campi tabella
+				int prodId = resultSet.getInt("prod_id"); 
 				product = createProduct(resultSet);
 				product.setProdId(prodId);
 				productList.add(product);
@@ -55,7 +54,7 @@ public class ProductDAO {
 
 			if (resultSet.next()) {
 				Product product = createProduct(resultSet);
-				product.setProdId(resultSet.getInt("prod_id")); // controllare campi
+				product.setProdId(resultSet.getInt("prod_id")); 
 				return product;
 			} else
 				return null;
@@ -124,6 +123,7 @@ public class ProductDAO {
 					return false;
 
 			} catch (SQLException e) {
+				e.printStackTrace();
 				return false;
 			}
 		}
@@ -146,7 +146,7 @@ public class ProductDAO {
 	}
 
 	private Product createProduct(ResultSet rs) throws SQLException {
-		return new Product(rs.getString("name"), // controllare i campi
+		return new Product(rs.getString("name"), 
 				rs.getString("description"), rs.getInt("quantity"), rs.getDouble("price"), rs.getString("category"));
 	}
 }

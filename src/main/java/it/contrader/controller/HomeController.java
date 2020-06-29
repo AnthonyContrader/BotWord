@@ -17,7 +17,7 @@ public class HomeController implements Controller {
             String password = request.get("password").toString();
             
             //Change view according userType
-            String userType= loginService.login(nomeUtente, password);
+            String userType= loginService.login(nomeUtente, password).getUsertype();
             if(userType==null)
                 MainDispatcher.getInstance().callAction("Login", "doControl", request);
             

@@ -35,14 +35,14 @@
 			for (UserDTO u : list) {
 		%>
 		<tr>
-			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
+			<td><a href=UserServlet?mode=read&id=<%=u.getUserId()%>>
 					<%=u.getUsername()%>
 			</a></td>
-			<td><%=u.getPassword()%></td>
+			<td><%=u.getUserPassword()%></td>
 			<td><%=u.getUsertype()%></td>
-			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
+			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getUserId()%>>Edit</a>
 			</td>
-			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
+			<td><a href=UserServlet?mode=delete&id=<%=u.getUserId()%>>Delete</a>
 			</td>
 
 		</tr>

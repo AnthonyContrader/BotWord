@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import java.util.List;
 
+import it.contrader.converter.ConverterUser;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
@@ -18,23 +19,23 @@ public class UserController implements Controller {
 	}
 
 	public List<User> getAllUser() {
-		return this.usersService.getAllUser();
+		return ConverterUser.toListEntity(this.usersService.getAll());
 	}
 
 	public UserDTO readUser(int userId) {
-		return this.usersService.readUser(userId);
+		return this.usersService.read(userId);
 	}
 
 	public boolean insertUser(UserDTO usersDTO) {
-		return this.usersService.insertUser(usersDTO);
+		return this.usersService.insert(usersDTO);
 	}
 
 	public boolean updateUser(UserDTO usersDTO) {
-		return this.usersService.updateUser(usersDTO);
+		return this.usersService.update(usersDTO);
 	}
 
 	public boolean deleteUser(Integer usersId) {
-		return this.usersService.deleteUser(usersId);
+		return this.usersService.delete(usersId);
 	}
 
 	@Override

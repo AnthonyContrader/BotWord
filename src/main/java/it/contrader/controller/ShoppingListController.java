@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import java.util.List;
 
+import it.contrader.converter.ConverterShoppingList;
 import it.contrader.dto.ShoppingListDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.ShoppingList;
@@ -17,24 +18,24 @@ public class ShoppingListController implements Controller {
 		this.shoppingListsService = new ShoppingListService();
 	}
 
-	public List<ShoppingList> getAllShoppingList() {
-		return this.shoppingListsService.getAllShoppingList();
+	public List<ShoppingListDTO> getAllShoppingList() {
+		return this.shoppingListsService.getAll();
 	}
 
 	public ShoppingListDTO readShoppingList(int shoppingListId) {
-		return this.shoppingListsService.readShoppingList(shoppingListId);
+		return this.shoppingListsService.read(shoppingListId);
 	}
 
 	public boolean insertShoppingList(ShoppingListDTO shoppingListsDTO) {
-		return this.shoppingListsService.insertShoppingList(shoppingListsDTO);
+		return this.shoppingListsService.insert(shoppingListsDTO);
 	}
 
 	public boolean updateShoppingList(ShoppingListDTO shoppingListsDTO) {
-		return this.shoppingListsService.updateShoppingList(shoppingListsDTO);
+		return this.shoppingListsService.update(shoppingListsDTO);
 	}
 
 	public boolean deleteShoppingList(Integer shoppingListsId) {
-		return this.shoppingListsService.deleteShoppingList(shoppingListsId);
+		return this.shoppingListsService.delete(shoppingListsId);
 	}
 
 	@Override
