@@ -29,6 +29,7 @@
 			<th>UserId</th>
 			<th>ShoppingList</th>
 			<th>TotalPrice</th>
+			<th>Data ordine </th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -41,6 +42,7 @@
 			</a></td>
 			<td><%=u.getShoppingList()%></td>
 			<td><%=u.getTotalPrice().toString()%></td>
+			<td> <%=u.getData().toString() %>
 			<td><a href=ShoppingListServlet?mode=read&update=true&id=<%=u.getShoppingListId()%>>Edit</a>
 			</td>
 			<td><a href=ShoppingListServlet?mode=delete&id=<%=u.getShoppingListId()%>>Delete</a>

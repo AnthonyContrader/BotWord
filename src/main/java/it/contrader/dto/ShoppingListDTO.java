@@ -1,6 +1,7 @@
 package it.contrader.dto;
 
 import org.json.simple.JSONObject;
+import java.util.Date;
 
 public class ShoppingListDTO {
 
@@ -8,6 +9,7 @@ public class ShoppingListDTO {
 	private int userId;
     private JSONObject shoppingList = new JSONObject();
 	private Double totalPrice;
+	private Date data;
 
 	public ShoppingListDTO() {}
 
@@ -15,6 +17,13 @@ public class ShoppingListDTO {
 		this.userId = userId;
 		this.shoppingList = shoppingList;
 		this.totalPrice = totalPrice;
+	}
+	
+	public ShoppingListDTO(int userId, JSONObject shoppingList, Double totalPrice, Date data) {
+		this.userId = userId;
+		this.shoppingList = shoppingList;
+		this.totalPrice = totalPrice;
+		this.data = data;
 	}
 
 	public int getShoppingListId() {
@@ -48,11 +57,20 @@ public class ShoppingListDTO {
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 
 	@Override
 	public String toString() {
-		return "ID: " + this.getShoppingListId() + "User id: " + this.getUserId() + "Lista ordie: " + this.getShoppingList()
-				+ "Prezzo: " + this.getTotalPrice() + " �";
+		return "ID: " + this.getShoppingListId() + "User id: " + this.getUserId() + "Lista ordine: " + this.getShoppingList()
+				+ "Prezzo: " + this.getTotalPrice() + "Data ordine: " + this.getData();
 	}
 
 }

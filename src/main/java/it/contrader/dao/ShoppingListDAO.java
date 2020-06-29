@@ -1,8 +1,13 @@
 package it.contrader.dao;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.Vector;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,7 +20,7 @@ import it.contrader.model.ShoppingList;
 public class ShoppingListDAO {
 
 	private final String QUERY_ALL = "select * from shopping_lists";
-	private final String QUERY_INSERT = "insert into shopping_lists (user_id, total_price, shopping_list) values (?,?, ?)";
+	private final String QUERY_INSERT = "insert into shopping_lists (user_id, total_price, shopping_list, shopping_list_date) values (?,?, ?,now())";
 	private final String QUERY_READ = "select * from shopping_lists where shopping_list_id=?";
 
 	private final String QUERY_UPDATE = "UPDATE shopping_lists SET user_id = ?, total_price=?, shopping_list=? WHERE shopping_list_id=?";
@@ -37,7 +42,8 @@ public class ShoppingListDAO {
 				Double totalPrice = resultSet.getDouble("total_price");
 				String jsonString = resultSet.getString("shopping_list");
 				JSONObject json = toJsonObject(jsonString);
-				ShoppingList shoppingList = new ShoppingList(userId, json, totalPrice);
+				Date data = resultSet.getDate("shopping_list_date");
+				ShoppingList shoppingList = new ShoppingList(userId, json, totalPrice, data);
 				shoppingList.setShopListId(shoppingListId);
 				shoppingsLists.add(shoppingList);
 			}
@@ -81,7 +87,8 @@ public class ShoppingListDAO {
 				price = resultSet.getDouble("total_price");
 				jsonString = resultSet.getString("shopping_list");
 				JSONObject json = toJsonObject(jsonString);
-				ShoppingList shoppingList = new ShoppingList(userId, json, price);
+				Date data = resultSet.getDate("shopping_list_date");
+				ShoppingList shoppingList = new ShoppingList(userId, json, price, data);
 				shoppingList.setShopListId(shoppingListId);
 				return shoppingList;
 			}
@@ -117,7 +124,7 @@ public class ShoppingListDAO {
 					shoppingListToUpdate.setTotalPrice(shoppingListRead.getTotalPrice());
 				}
 
-				// Update the user
+			
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(1, shoppingListToUpdate.getUserId());
 				preparedStatement.setDouble(2, shoppingListToUpdate.getTotalPrice());
@@ -166,7 +173,8 @@ public class ShoppingListDAO {
 				price = resultSet.getDouble("total_price");
 				jsonString = resultSet.getString("shopping_list");
 				JSONObject json = toJsonObject(jsonString);
-				ShoppingList shoppingList = new ShoppingList(userId, json, price);
+				Date data = resultSet.getDate("shopping_list_date");
+				ShoppingList shoppingList = new ShoppingList(userId, json, price,data);
 				shoppingList.setShopListId(shoppingListId);
 				return shoppingList;
 			}

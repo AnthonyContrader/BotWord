@@ -28,7 +28,7 @@
 		<th>Quantitï¿½</th>
 		<th>Prezzo</th>
 		<th>Categoria</th>
-		<th>Seleziona la quantitï¿½ da inserire nell'ordine</th>
+		<th>Seleziona la quantità da inserire nell'ordine</th>
 		<th> </th>
 	</tr>
 	<tr>

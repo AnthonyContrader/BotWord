@@ -28,11 +28,11 @@
 		<th>Quantitï¿½</th>
 		<th>Prezzo</th>
 		<th>Categoria</th>
-		<th>Seleziona la quantitï¿½ da inserire nell'ordine</th>
+		<th>Seleziona la quantità da inserire nell'ordine</th>
 		<th> </th>
 	</tr>
 	<tr>
-	<form action="ShoppingListServlet?mode=update&id=<%=prodDto.getProdId()%>" method="post">
+	<form action="ShoppingListServlet?mode=updateorder&id=<%=prodDto.getProdId()%>" method="post">
 	           <td> <input type="hidden" value=<%=prodDto.getProdId()%> name="prodID" readonly="readonly"> </td>
 		       <td> <input type="text" value=<%=prodDto.getName()%> name="name" readonly="readonly"> </td>
 		       <td> <input type="text" value=<%=prodDto.getDescription()%> name="descrizione" readonly="readonly"> </td>

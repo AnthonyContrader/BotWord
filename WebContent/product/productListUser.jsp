@@ -29,7 +29,7 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Disponibilit&agrave;</th>
+				<th>Disponibilità</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
 			</tr>
