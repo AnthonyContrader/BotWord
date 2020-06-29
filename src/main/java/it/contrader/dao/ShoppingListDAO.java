@@ -1,21 +1,21 @@
 package it.contrader.dao;
 
-import java.sql.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-import java.util.Vector;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import it.contrader.utils.GestoreEccezioni;
-import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.ShoppingList;
+import it.contrader.utils.ConnectionSingleton;
+import it.contrader.utils.GestoreEccezioni;
 
 public class ShoppingListDAO {
 
