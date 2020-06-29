@@ -91,10 +91,10 @@ public class ProductsServlet extends HttpServlet {
 			case "INSERT":
 				name = request.getParameter("name");
 				description = request.getParameter("description");
-				Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+				Integer availability = Integer.parseInt(request.getParameter("availability"));
 				Double price = Double.parseDouble(request.getParameter("price"));
 				category = request.getParameter("category");
-				prodDto = new ProductDTO(name, description, quantity, price, category);
+				prodDto = new ProductDTO(name, description, availability, price, category);
 				ans = service.insert(prodDto);
 				request.setAttribute("ans", ans);
 				updateList(request);
@@ -103,11 +103,11 @@ public class ProductsServlet extends HttpServlet {
 			case "UPDATE":
 				name = request.getParameter("name");
 				description = request.getParameter("description");
-				quantity = Integer.parseInt(request.getParameter("quantity"));
+				availability = Integer.parseInt(request.getParameter("availability"));
 				price = Double.parseDouble(request.getParameter("price"));
 				category = request.getParameter("category");
 				id = Integer.parseInt(request.getParameter("id"));
-				prodDto = new ProductDTO(name, description, quantity, price, category);
+				prodDto = new ProductDTO(name, description, availability, price, category);
 				prodDto.setProdId(id);
 				ans = service.update(prodDto);
 				updateList(request);

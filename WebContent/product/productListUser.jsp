@@ -40,7 +40,7 @@
 				<td><a
 					href="ProductsServlet?mode=read&id=<%=prodDto.getProdId()%>"> <%=prodDto.getName()%></a>
 				</td>
-				<td><%=prodDto.getQuantity()%></td>
+				<td><%=prodDto.getAvailability()%></td>
 				<td><%=prodDto.getPrice().toString()%></td>
 				<td><%=prodDto.getCategory()%></td>
 			</tr>

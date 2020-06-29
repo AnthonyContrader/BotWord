@@ -25,10 +25,10 @@
 	<tr> 
 		<th>Nome</th>
 		<th>Descrizione</th>
-		<th>Quantità</th>
+		<th>Quantitï¿½</th>
 		<th>Prezzo</th>
 		<th>Categoria</th>
-		<th>Seleziona la quantità da inserire nell'ordine</th>
+		<th>Seleziona la quantitï¿½ da inserire nell'ordine</th>
 		<th> </th>
 	</tr>
 	<tr>
@@ -36,10 +36,10 @@
 	           <td> <input type="hidden" value=<%=prodDto.getProdId()%> name="prodID" readonly="readonly"> </td>
 		       <td> <input type="text" value=<%=prodDto.getName()%> name="name" readonly="readonly"> </td>
 		       <td> <input type="text" value=<%=prodDto.getDescription()%> name="descrizione" readonly="readonly"> </td>
-		       <td> <input type="text" value=<%=prodDto.getQuantity()%> name="disponibilita" readonly="readonly"> </td>
+		       <td> <input type="text" value=<%=prodDto.getAvailability()%> name="disponibilita" readonly="readonly"> </td>
 		       <td> <input type="number" min="0.01" step="0.01" value=<%=prodDto.getPrice()%> name="prezzo" readonly="readonly"> </td>
 		       <td> <input type="text" value=<%=prodDto.getCategory()%> name="categoria" readonly="readonly"> </td>
-		       <td> <input type="number" min="1" step="1" max=<%=prodDto.getQuantity()%> id="quant" name="quantity"> </td>
+		       <td> <input type="number" min="1" step="1" max=<%=prodDto.getAvailability()%> id="quant" name="availability"> </td>
 		       <td> <button type="submit">Crea un nuovo ordine</button> </td>
 		        </form> 
 </tr>

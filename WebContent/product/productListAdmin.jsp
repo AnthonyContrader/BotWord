@@ -27,7 +27,7 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Quantità</th>
+				<th>Quantitï¿½</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
 				<th></th>
@@ -40,7 +40,7 @@
 				<td><a
 					href="ProductsServlet?mode=read&id=<%=prodDto.getProdId()%>"> <%=prodDto.getName()%></a>
 				</td>
-				<td><%=prodDto.getQuantity()%></td>
+				<td><%=prodDto.getAvailability()%></td>
 				<td><%=prodDto.getPrice().toString()%></td>
 				<td><%=prodDto.getCategory()%></td>
 				<td><a href=ProductsServlet?mode=read&update=true&id=<%=prodDto.getProdId()%>>Edit</a></td>
@@ -74,11 +74,11 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label>Quantità</label>
+					<label>Quantitï¿½</label>
 				</div>
 				<div class="col-75">
-					<input type="number" min="1" step="1" id="quant" name="quantity"
-						placeholder="inserisci la quantità del prodotto">
+					<input type="number" min="1" step="1" id="quant" name="availability"
+						placeholder="inserisci la quantitï¿½ del prodotto">
 				</div>
 			</div>
 			<div class="row">

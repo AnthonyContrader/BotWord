@@ -41,11 +41,11 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label>Quantità</label>
+					<label>Quantitï¿½</label>
 				</div>
 				<div class="col-75">
-					<input type="number" min="1" step="1" id="quant" name="quantity" value=<%=dto.getQuantity()%>
-						placeholder="inserisci la nuova quantità del prodotto">
+					<input type="number" min="1" step="1" id="quant" name="availability" value=<%=dto.getAvailability()%>
+						placeholder="inserisci la nuova quantitï¿½ del prodotto">
 				</div>
 			</div>
 			<div class="row">
