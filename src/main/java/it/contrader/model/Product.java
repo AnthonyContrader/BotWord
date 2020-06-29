@@ -5,17 +5,17 @@ public class Product {
 	private int prodId;
 	private String name;
 	private String description;
-	private Integer quantity;
+	private Integer availability;
 	private Double price;
 	private String category;
 
 	public Product() {
 	}
 
-	public Product(String name, String description, Integer quantity, Double price, String category) {
+	public Product(String name, String description, Integer availability, Double price, String category) {
 		this.name = name;
 		this.description = description;
-		this.quantity = quantity;
+		this.availability = availability;
 		this.price = price;
 		this.category = category;
 	}
@@ -52,12 +52,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getAvailability() {
+		return availability;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setAvailability(Integer availability) {
+		this.availability = availability;
 	}
 
 	public Double getPrice() {
@@ -71,7 +71,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "ID: " + this.getProdId() + " Nome: " + this.getName() + " Descrizione: " + this.getDescription()
-				+ " Disponibilita': " + this.getQuantity() + " Prezzo: " + this.getPrice() + " Categoria: " + this.getCategory();
+				+ " Disponibilita': " + this.getAvailability() + " Prezzo: " + this.getPrice() + " Categoria: " + this.getCategory();
 	}
 
 	public boolean equals(Product prodCompare) {
@@ -79,7 +79,7 @@ public class Product {
 			return false;
 		if (!this.getDescription().equals(prodCompare.getDescription()))
 			return false;
-		if (!this.getQuantity().equals(prodCompare.getQuantity()))
+		if (!this.getAvailability().equals(prodCompare.getAvailability()))
 			return false;
 		if (!this.getPrice().equals(prodCompare.getPrice()))
 				return false;

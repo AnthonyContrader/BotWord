@@ -67,10 +67,10 @@ public class ShoppingListServlet extends HttpServlet {
 		case "INSERT":
 			Integer userId = userDto.getUserId();
 			String prodID = request.getParameter("prodID").toString();
-			String quantity = request.getParameter("quantity");
-			String shoppingList = "{\""+ prodID +"\":\"" +quantity +"\"}";
+			String availability = request.getParameter("availability");
+			String shoppingList = "{\""+ prodID +"\":\"" +availability +"\"}";
 			Double price = Double.parseDouble(request.getParameter("prezzo").toString());
-			Double totalPrice = price * Double.parseDouble(quantity);
+			Double totalPrice = price * Double.parseDouble(availability);
 			dto = new ShoppingListDTO(userId, ConverterStringToJson.toJsonObject(shoppingList), totalPrice);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
@@ -93,8 +93,8 @@ public class ShoppingListServlet extends HttpServlet {
 			userId = userDto.getUserId();
 			Double totalPriceOld = dto.getTotalPrice();
 			id = Integer.parseInt(request.getParameter("id"));
-			quantity = request.getParameter("quantity");
-			Integer quant = Integer.parseInt(quantity);
+			availability = request.getParameter("availability");
+			Integer quant = Integer.parseInt(availability);
 			Double totalPriceNew = totalPriceOld;
 			if(jsonShoppingList.containsKey(prodID)){
 			String quantOldstr = jsonShoppingList.get(prodID).toString();
@@ -116,7 +116,7 @@ public class ShoppingListServlet extends HttpServlet {
 				totalPriceNew = totalPriceOld + price * quant;
 				dto.setTotalPrice(totalPriceNew);
 			}
-			jsonShoppingList.put(prodID, quantity);
+			jsonShoppingList.put(prodID, availability);
 			dto.setShoppingList(jsonShoppingList);
 			ans = service.update(dto);
 			updateList(request);

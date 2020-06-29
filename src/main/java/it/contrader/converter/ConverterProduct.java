@@ -15,7 +15,7 @@ public class ConverterProduct {
 			productDTO.setProdId(product.getProdId());
 			productDTO.setName(product.getName());
 			productDTO.setDescription(product.getDescription());
-			productDTO.setQuantity(product.getQuantity());
+			productDTO.setAvailability(product.getAvailability());
 			productDTO.setPrice(product.getPrice());
 			productDTO.setCategory(product.getCategory());
 		}
@@ -29,7 +29,7 @@ public class ConverterProduct {
 			product.setProdId(productDTO.getProdId());
 			product.setName(productDTO.getName());
 			product.setDescription(productDTO.getDescription());
-			product.setQuantity(productDTO.getQuantity());
+			product.setAvailability(productDTO.getAvailability());
 			product.setPrice(productDTO.getPrice());
 			product.setCategory(productDTO.getCategory());
 		}

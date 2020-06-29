@@ -5,17 +5,17 @@ public class ProductDTO {
 	private int prodId;
 	private String name;
 	private String description;
-	private Integer quantity;
+	private Integer availability;
 	private Double price;
 	private String category;
 
 	public ProductDTO() {
 	}
 
-	public ProductDTO(String name, String description, Integer quantity, Double price, String category) {
+	public ProductDTO(String name, String description, Integer availability, Double price, String category) {
 		this.name = name;
 		this.description = description;
-		this.quantity = quantity;
+		this.availability = availability;
 		this.price = price;
 		this.category = category;
 	}
@@ -44,12 +44,12 @@ public class ProductDTO {
 		this.description = description;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getAvailability() {
+		return availability;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setAvailability(Integer availability) {
+		this.availability = availability;
 	}
 
 	public Double getPrice() {
@@ -71,7 +71,7 @@ public class ProductDTO {
 	@Override
 	public String toString() {
 		return "ID: " + this.getProdId() + " Nome: " + this.getName() + " Descrizione: " + this.getDescription()
-				+ " Quantita': " + this.getQuantity() + " Prezzo: " + this.getPrice() + " Categoria: " + this.getCategory();
+				+ " Quantita': " + this.getAvailability() + " Prezzo: " + this.getPrice() + " Categoria: " + this.getCategory();
 	}
 
 }

@@ -25,14 +25,14 @@
 	<tr> 
 		<th>Nome</th>
 		<th>Descrizione</th>
-		<th>Quantità</th>
+		<th>Quantitï¿½</th>
 		<th>Prezzo</th>
 		<th>Categoria</th>
 	</tr>
 	<tr>
 		<td><%=prodDto.getName()%></td>
 		<td> <%=prodDto.getDescription()%></td>
-		<td> <%=prodDto.getQuantity()%></td>
+		<td> <%=prodDto.getAvailability()%></td>
 		<td> <%=prodDto.getPrice()%></td>
 		<td> <%=prodDto.getCategory()%></td>
 	</tr>	

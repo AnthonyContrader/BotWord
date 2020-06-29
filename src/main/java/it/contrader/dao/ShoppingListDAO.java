@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import it.contrader.controller.GestoreEccezioni;
+import it.contrader.utils.GestoreEccezioni;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.ShoppingList;
 

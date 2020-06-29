@@ -17,9 +17,9 @@ CREATE TABLE products (
   prod_id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   description varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  quantity int(11) NOT NULL,
+  availability int(11) NOT NULL,
   price double(10,2) NOT NULL,
-  category varchar(25) NOT NULL,
+  availability varchar(25) NOT NULL,
   PRIMARY KEY (prod_id)
 );
 
@@ -28,6 +28,7 @@ CREATE TABLE shopping_lists (
   user_id int(11) NOT NULL,
   total_price double(10,2) NOT NULL,
   shopping_list JSON NOT NULL,
+  datetime DEFAULT   CURRENT_TIMESTAMP,
   PRIMARY KEY (shopping_list_id)
 );
 
