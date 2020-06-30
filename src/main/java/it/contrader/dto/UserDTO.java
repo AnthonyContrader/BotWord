@@ -19,4 +19,9 @@ public class UserDTO {
 
 	private Usertype usertype;
 
+	private String name;
+
+	private String surname;
+
+	private String address;
 }

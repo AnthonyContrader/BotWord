@@ -19,11 +19,14 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
 
 	@PostMapping("/login")
 	public String login(HttpServletRequest request, @RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "password", required = true) String password) {
-
+		
+		
+		
 		UserDTO userDTO = service.findByUsernameAndPassword(username, password);
 		request.getSession().setAttribute("user", userDTO);
 
@@ -33,7 +36,7 @@ public class UserController {
 			return "homeadmin";
 
 		case USER:
-			return "index";
+			return "homeuser";
 
 		default:
 			return "index";
@@ -43,14 +46,14 @@ public class UserController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "users";
+		return "userslist";
 	}
 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "users";
+		return "userslist";
 	}
 
 	@GetMapping("/preupdate")
@@ -61,29 +64,37 @@ public class UserController {
 
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype, @RequestParam("name") String name,
+			@RequestParam("surname") String surname, @RequestParam("address") String address) {
 
 		UserDTO dto = new UserDTO();
 		dto.setId(id);
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		dto.setName(name);
+		dto.setSurname(surname);
+		dto.setAddress(address);
 		service.update(dto);
 		setAll(request);
-		return "users";
+		return "userslist";
 
 	}
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype, @RequestParam("name") String name,
+			@RequestParam("surname") String surname, @RequestParam("address") String address) {
 		UserDTO dto = new UserDTO();
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		dto.setName(name);
+		dto.setSurname(surname);
+		dto.setAddress(address);
 		service.insert(dto);
 		setAll(request);
-		return "users";
+		return "userslist";
 	}
 
 	@GetMapping("/read")

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="header">SAMPLE Project</div>
+	<div class="header">BOTWORD Project</div>
 
 </body>
 </html>

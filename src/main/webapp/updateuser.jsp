@@ -43,6 +43,28 @@
 			type="text" id="pass" name="password" value=<%=u.getPassword()%>> 
     </div>
   </div>
+  
+   <div class="col-25">
+      <label for="user">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="nome" name="name" value=<%=u.getName()%>>
+    </div>
+  
+   <div class="col-25">
+      <label for="user">Surname</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="cognome" name="surname" value=<%=u.getSurname()%>>
+    </div>
+    
+     <div class="col-25">
+      <label for="user">Address</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="indirizzo" name="address" value=<%=u.getAddress()%>>
+    </div>
+  
   <div class="row">
     <div class="col-25">
       <label for="type">Usertype</label>
