@@ -12,7 +12,7 @@
 
 	<%@ include file="../css/header.jsp"%>
 	<%UserDTO userDto = (UserDTO)session.getAttribute("user"); %>
-	
+
 	<div class="navbar">
 		<a href="home<%=userDto.getUsertype()%>.jsp">Home</a>
 		<a href="LogoutServlet" id="logout">Logout</a>
@@ -20,15 +20,15 @@
 
 	<div class="main">
 	<%ProductDTO prodDto = (ProductDTO) request.getAttribute("dto");%>
-	
+
 	<table>
-	<tr> 
+	<tr>
 		<th>Nome</th>
 		<th>Descrizione</th>
-		<th>Quantitï¿½</th>
+		<th>Quantit&agrave</th>
 		<th>Prezzo</th>
 		<th>Categoria</th>
-		<th>Seleziona la quantità da inserire nell'ordine</th>
+		<th>Seleziona la quantit&agrave da inserire nell'ordine</th>
 		<th> </th>
 	</tr>
 	<tr>
@@ -41,13 +41,13 @@
 		       <td> <input type="text" value=<%=prodDto.getCategory()%> name="categoria" readonly="readonly"> </td>
 		       <td> <input type="number" min="1" step="1" max=<%=prodDto.getAvailability()%> id="quant" name="availability"> </td>
 		       <td> <button type="submit">Modifica il tuo ordine</button> </td>
-		        </form> 
+		        </form>
 </tr>
-			
+
 </table>
 
 <br>
-	
+
 	</div>
 
 </body>
