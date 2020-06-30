@@ -18,7 +18,7 @@
 		<%
 			ProductDTO dto = (ProductDTO) request.getAttribute("dto");
 		%>
-		
+
 		<form id="floatleft" action="ProductsServlet?mode=update&id=<%=dto.getProdId()%>"
 			method="post">
 			<div class="row">
@@ -41,7 +41,7 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label>Quantit�</label>
+					<label>Quantit&agrave</label>
 				</div>
 				<div class="col-75">
 					<input type="number" min="1" step="1" id="quant" name="availability" value=<%=dto.getAvailability()%>
@@ -68,7 +68,7 @@
 			</div>
 			<button type="submit">Update</button>
 		</form>
-		
+
 	</div>
 </body>
 </html>

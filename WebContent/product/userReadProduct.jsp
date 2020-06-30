@@ -12,20 +12,20 @@
 	<%@ include file="../css/header.jsp"%>
 
 	<div class="navbar">
-	    <a href="homeuser.jsp">Home</a> 
+	    <a href="homeuser.jsp">Home</a>
 		<a href="ProductsServlet?mode=productslist">Prodotti</a>
 		<a href="LogoutServlet" id="logout">Logout</a>
-		
+
 	</div>
 
 	<div class="main">
 	<%ProductDTO prodDto = (ProductDTO) request.getAttribute("dto");%>
-	
+
 	<table>
-	<tr> 
+	<tr>
 		<th>Nome</th>
 		<th>Descrizione</th>
-		<th>Quantit�</th>
+		<th>Quantit&agrave</th>
 		<th>Prezzo</th>
 		<th>Categoria</th>
 	</tr>
@@ -35,11 +35,11 @@
 		<td> <%=prodDto.getAvailability()%></td>
 		<td> <%=prodDto.getPrice()%></td>
 		<td> <%=prodDto.getCategory()%></td>
-	</tr>	
+	</tr>
 </table>
 
 <br>
-	
+
 	</div>
 
 </body>

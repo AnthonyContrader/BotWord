@@ -26,11 +26,13 @@
 		<th>ShoppingListUserId</th>
 		<th>ShoppingList</th>
 		<th>ShoppingListTotalPrice</th>
+		<th>Data Ordine </th>
 	</tr>
 	<tr>
 		<td><%=sl.getUserId()%></td>
 		<td> <%=sl.getShoppingList()%></td>
 		<td> <%=sl.getTotalPrice().toString()%></td>
+		<td> <%=sl.getData().toString() %>
 	</tr>
 </table>
 

@@ -27,7 +27,7 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Quantit�</th>
+				<th>Quantit&agrave</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
 				<th></th>
@@ -74,7 +74,7 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label>Quantit�</label>
+					<label>Quantit&agrave</label>
 				</div>
 				<div class="col-75">
 					<input type="number" min="1" step="1" id="quant" name="availability"

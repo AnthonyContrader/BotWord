@@ -1,5 +1,6 @@
 package it.contrader.servlets;
 
+import java.util.Date;
 import java.util.List;
 
 import java.io.IOException;
@@ -85,7 +86,7 @@ public class ShoppingListServlet extends HttpServlet {
 			}
 			break;
 
-		case "UPDATE":
+		case "UPDATEORDER":
 			prodID = request.getParameter("prodID").toString();
 			price = Double.parseDouble(request.getParameter("prezzo").toString());
 			dto = (ShoppingListDTO) session.getAttribute("ordine");
@@ -127,6 +128,20 @@ public class ShoppingListServlet extends HttpServlet {
 			else
 				getServletContext().getRequestDispatcher("/shoppinglist/readShoppingList.jsp").forward(request,
 						response);
+			break;
+			
+		case "UPDATE":
+			userId = Integer.parseInt(request.getParameter("userId"));
+			shoppingList = request.getParameter("shoppingList");
+			totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
+			JSONObject json = ConverterStringToJson.toJsonObject(shoppingList);
+			dto = new ShoppingListDTO(userId, json, totalPrice);
+			id = Integer.parseInt(request.getParameter("id"));
+			dto.setShoppingListId(id);
+			service.update(dto);
+			updateList(request);
+			getServletContext().getRequestDispatcher("/shoppinglist/shoppingListManager.jsp").forward(request,
+					response);
 			break;
 
 		case "DELETE":

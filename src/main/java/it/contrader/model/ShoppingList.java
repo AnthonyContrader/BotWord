@@ -1,5 +1,7 @@
 package it.contrader.model;
 
+import java.util.Date;
+
 import org.json.simple.JSONObject;
 
 public class ShoppingList {
@@ -15,14 +17,16 @@ public class ShoppingList {
 	private int userId;
 	private JSONObject shoppingList = new JSONObject();
 	private Double totalPrice;
+	private Date data;
 
 	public ShoppingList() {
 	}
 
-	public ShoppingList(int userId, JSONObject shoppingList, Double totalPrice) {
+	public ShoppingList(int userId, JSONObject shoppingList, Double totalPrice, Date data) {
 		this.userId = userId;
 		this.shoppingList = shoppingList;
 		this.totalPrice = totalPrice;
+		this.data = data;
 	}
 
 	// shoppingList.add( new ShoppingItem( "Macbook Pro", 100000L ) );
@@ -51,9 +55,19 @@ public class ShoppingList {
 		return totalPrice;
 	}
 	
+	
+	
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	@Override
 	public String toString() {
 		return "ID shopping List: " + this.getShopListId() + " Uder ID: " + this.getUserId() + " Prezzo totale: " + this.getTotalPrice()
-		+ " Prodotti nel carrello: {\"ID prodotto\" : \"Quantita'\"} " + this.getShoppingList();
+		+ " Prodotti nella shopping list: {\"ID prodotto\" : \"Quantita'\"} " + this.getShoppingList() + "Data ordine: " + this.getData();
 	}
 }

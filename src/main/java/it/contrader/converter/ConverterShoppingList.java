@@ -16,6 +16,7 @@ public class ConverterShoppingList {
 			shoppingListDTO.setUserId(shoppingList.getUserId());
             shoppingListDTO.setTotalPrice(shoppingList.getTotalPrice());
 			shoppingListDTO.setShoppingList(shoppingList.getShoppingList());
+			shoppingListDTO.setData(shoppingList.getData());
 		}
 		return shoppingListDTO;
 	}
@@ -28,6 +29,7 @@ public class ConverterShoppingList {
 			shoppingList.setUserId(shoppingListDTO.getUserId());
 			shoppingList.setTotalPrice(shoppingListDTO.getTotalPrice());
 			shoppingList.setShoppingList(shoppingListDTO.getShoppingList());
+			shoppingList.setData(shoppingListDTO.getData());
 		}
 		return shoppingList;
 	}
