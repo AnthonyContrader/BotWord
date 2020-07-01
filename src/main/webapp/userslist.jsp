@@ -14,8 +14,10 @@
 	<%@ include file="./css/header.jsp"%>
 
 	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a> <a class="active"
-			href="/user/getall">Users</a> <a href="/user/logout" id="logout">Logout</a>
+		<a href="/homeadmin.jsp">Home</a> 
+		<a class="active" href="/user/getall">Users</a> 
+		<a href=/product/getall>Lista Prodotti</a> 
+		<a href="/user/logout" id="logout">Logout</a>
 	</div>
 	<div class="main">
 		<%
@@ -46,11 +48,11 @@
 				<td><%=u.getName()%></td>
 				<td><%=u.getSurname()%></td>
 				<td><%=u.getAddress()%></td>
-				
+
 				<td><a href="/user/preupdate?id=<%=u.getId()%>">Edit</a></td>
 
 				<td><a href="/user/delete?id=<%=u.getId()%>">Delete</a></td>
-				
+
 
 			</tr>
 			<%
@@ -106,7 +108,7 @@
 						placeholder="inserisci l'indirizzo">
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-25">
 					<label for="type">Usertype</label>
