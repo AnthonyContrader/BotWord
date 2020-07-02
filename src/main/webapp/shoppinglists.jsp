@@ -16,7 +16,8 @@
 	<div class="navbar">
 		<a href="/homeadmin.jsp">Home</a>
 		<a class="active" href="ProductsServlet?mode=productslist">Lista Prodotti</a>
-		<a class="active" href="/shoppinglist/getall">Users</a> <a href="/shoppinglist/logout" id="logout">Logout</a>
+		<a class="active" href="/shoppinglist/getall">Order List</a>
+		<a href="/shoppinglist/logout" id="logout">Logout</a>
 	</div>
 	<div class="main">
 		<%
@@ -38,7 +39,7 @@
 				for (ShoppingListDTO sl : list) {
 			%>
 			<tr>
-				<td><a href="/shoppinglist/read?id=<%=u.getId()%>"> <%=sl.getUserId()%>
+				<td><a href="/shoppinglist/read?id=<%=sl.getId()%>"> <%=sl.getUserId()%>
 				</a></td>
 				<td><%=sl.getProductId()%></td>
 				<td><%=sl.getQuantity()%></td>
