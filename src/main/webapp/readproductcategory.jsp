@@ -26,14 +26,14 @@
 			switch (userDto.getUsertype()) {
 		case ADMIN:
 		%>
-		<a href="/user/getall">Users</a> <a class="active"
+		<a href="/user/getall">Users</a> <a
 			href=/product/getall>Lista Prodotti</a> <a href="/user/logout"
 			id="logout">Logout</a>
 		<%
 			break;
 				case USER:
 		%>
-		<a class="active" href="/product/getall">Lista Prodotti</a> <a
+		<a href="/product/getall">Lista Prodotti</a> <a
 			href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
@@ -43,7 +43,7 @@
 
 	<div class="main">
 		<%
-			List<ProductDTO> listDto = (List<ProductDTO>) request.getSession().getAttribute("productlist");
+			List<ProductDTO> listDto = (List<ProductDTO>) request.getSession().getAttribute("listdto");
 		%>
 		<br>
 		<%
@@ -56,7 +56,6 @@
 				<th>Disponibilità</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
-				<th></th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -73,9 +72,6 @@
 				<td><a href="/product/preupdate?id=<%=dto.getId()%>">Edit</a></td>
 
 				<td><a href="/product/delete?id=<%=dto.getId()%>">Delete</a></td>
-				
-				<td> <a href="/product/category?category=<%=dto.getCategory()%>"> Ricerca tutti i prodotti di questa categoria</a> </td>
-				
 			</tr>
 
 			<%
@@ -142,7 +138,6 @@
 				<th>Disponibilità</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
-				<th> </th>
 			</tr>
 			<%
 				for (ProductDTO dto : listDto) {
@@ -153,7 +148,6 @@
 				<td><%=dto.getAvailability()%></td>
 				<td><%=dto.getPrice()%></td>
 				<td> <%=dto.getCategory()%> </td>
-				<td> <a href="/product/category?category=<%=dto.getCategory()%>"> Ricerca tutti i prodotti di questa categoria</a> </td>
 			</tr>
 			<%
 				}

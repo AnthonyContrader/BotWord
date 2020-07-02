@@ -75,6 +75,12 @@ public class ProductController {
 		setAll(request);
 		return "productlist";
 	}
+	
+	@GetMapping("/category")
+	public String readCategory(HttpServletRequest request, @RequestParam("category") String category) {
+		request.getSession().setAttribute("listdto", service.findByCategory(category));
+		return "readproductcategory";
+	}
 
 	private void setAll(HttpServletRequest request) {
 		HttpSession session = request.getSession();
