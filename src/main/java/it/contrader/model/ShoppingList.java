@@ -31,5 +31,5 @@ public class ShoppingList {
 
 	private Double totalPrice;
 
-	private Data date;
+	private Date date;
 }

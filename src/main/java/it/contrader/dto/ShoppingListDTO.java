@@ -21,5 +21,5 @@ public class ShoppingListDTO {
 
 	private Double totalPrice;
 
-	private Data date;
+	private Date date;
 }
