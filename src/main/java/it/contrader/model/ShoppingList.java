@@ -10,31 +10,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-public class User {
 
-	public enum Usertype {
-		ADMIN, USER
-	}
+public class ShoppingList {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
-	private String username;
+	private Long userId;
 
-	private String password;
+	private Long productId;
 
-	private Usertype usertype;
-	
-	private String name;
-	
-	private String surname;
-	
-	private String address;
+	private int quantity;
 
+	private Double totalPrice;
+
+	private Date date;
 }

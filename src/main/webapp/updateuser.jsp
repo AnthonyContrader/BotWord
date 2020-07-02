@@ -16,7 +16,8 @@
 <%@ include file="./css/header.jsp" %>
 <div class="navbar">
   <a href="/homeadmin.jsp">Home</a>
-  <a class="active" href="/user/getall">Users</a>
+  <a href="/user/getall">Users</a>
+  <a href=/product/getall>Lista Prodotti</a>
   <a href="/user/logout" id="logout">Logout</a>
 </div>
 <br>
@@ -31,7 +32,7 @@
       <label for="user">Username</label>
     </div>
     <div class="col-75">
-      <input type="text" id="user" name="username" value=<%=u.getUsername()%>>
+      <input type="text" id="user" name="username" value="<%=u.getUsername()%>">
     </div>
   </div>
   <div class="row">
@@ -40,9 +41,31 @@
     </div>
     <div class="col-75">
       <input
-			type="text" id="pass" name="password" value=<%=u.getPassword()%>> 
+			type="text" id="pass" name="password" value="<%=u.getPassword()%>"> 
     </div>
   </div>
+  
+   <div class="col-25">
+      <label for="user">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="nome" name="name" value="<%=u.getName()%>">
+    </div>
+  
+   <div class="col-25">
+      <label for="user">Surname</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="cognome" name="surname" value="<%=u.getSurname()%>">
+    </div>
+    
+     <div class="col-25">
+      <label for="user">Address</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="indirizzo" name="address" value="<%=u.getAddress()%>">
+    </div>
+  
   <div class="row">
     <div class="col-25">
       <label for="type">Usertype</label>
