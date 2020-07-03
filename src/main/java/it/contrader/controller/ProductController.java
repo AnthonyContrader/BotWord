@@ -23,13 +23,13 @@ public class ProductController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "productlist";
+		return "product/productlist";
 	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readproduct";
+		return "product/readproduct";
 	}
 
 	@PostMapping("/insert")
@@ -44,13 +44,13 @@ public class ProductController {
 		prodDto.setCategory(category);
 		service.insert(prodDto);
 		setAll(request);
-		return "productlist";
+		return "product/productlist";
 	}
 
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updateproduct";
+		return "product/updateproduct";
 	}
 
 	@PostMapping("/update")
@@ -66,20 +66,20 @@ public class ProductController {
 		prodDto.setCategory(category);
 		service.update(prodDto);
 		setAll(request);
-		return "productlist";
+		return "product/productlist";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "productlist";
+		return "product/productlist";
 	}
 	
 	@GetMapping("/category")
 	public String readCategory(HttpServletRequest request, @RequestParam("category") String category) {
 		request.getSession().setAttribute("listdto", service.findByCategory(category));
-		return "readproductcategory";
+		return "product/readproductcategory";
 	}
 
 	private void setAll(HttpServletRequest request) {

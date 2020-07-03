@@ -20,10 +20,11 @@ public class ShoppingListConverter extends AbstractConverter<ShoppingList, Shopp
 
 	@Override
 	public ShoppingListDTO toDTO(ShoppingList shoppingList) {
+		System.out.print(shoppingList);
 		ShoppingListDTO shoppingListDTO = null;
 		if (shoppingList != null) {
-			shoppingListDTO = new ShoppingListDTO(shoppingListDTO.getId(), shoppingListDTO.getUserId(), shoppingListDTO.getProductId(), shoppingListDTO.getQuantity(),
-					shoppingListDTO.getTotalPrice(), shoppingListDTO.getDate());
+			shoppingListDTO = new ShoppingListDTO(shoppingList.getId(), shoppingList.getUserId(), shoppingList.getProductId(), shoppingList.getQuantity(),
+					shoppingList.getTotalPrice(), shoppingList.getDate());
 
 		}
 		return shoppingListDTO;
