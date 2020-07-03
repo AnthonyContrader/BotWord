@@ -25,43 +25,62 @@
 			switch (userDto.getUsertype()) {
 		case ADMIN:
 		%>
-		<a href="/user/getall">Users</a> 
-		<a href=/product/getall>Lista Prodotti</a> 
-		<a href="/user/logout" id="logout">Logout</a>
+		<a href="/user/getall">Users</a> <a href=/product/getall>Lista
+			Prodotti</a> <a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				case USER:
 		%>
-		<a href="/product/getall">Users</a>
-		<a href=/product/getall>Lista Prodotti</a> 
-		<a	href="/user/logout" id="logout">Logout</a>
+		<a href="/product/getall">Users</a> <a href=/product/getall>Lista
+			Prodotti</a> <a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				}
 		%>
-		</div>
+	</div>
+	<br>
+	<div class="main">
+		<%
+			ProductDTO dto = (ProductDTO) request.getSession().getAttribute("dto");
+		%>
+		<table>
+			<tr>
+				<th></th>
+				<th></th>
+				<th>Nome</th>
+				<th>Descrizione</th>
+				<th>Disponibilità</th>
+				<th>Prezzo</th>
+				<th>Categoria</th>
+				<th>Seleziona la quantità da aggiungere all'ordine</th>
+				<th></th>
+			</tr>
+			<form action="/shoppinglist/insert" method="post">
+				<td><input type="hidden" value=<%=userDto.getId()%>
+					name="userId"></td>
+				<td><input type="hidden" value=<%=dto.getId()%>
+					name="productId"></td>
+				<td><input type="text" value="<%=dto.getName()%>" name="name"
+					readonly="readonly"></td>
+				<td><input type="text" value="<%=dto.getDescription()%>"
+					name="descrizione" readonly="readonly"></td>
+				<td><input type="number" value=<%=dto.getAvailability()%>
+					name="disponibilita" readonly="readonly"></td>
+				<td><input type="number" value=<%=dto.getPrice()%>
+					name="totalPrice" readonly="readonly"></td>
+				<td><input type="text" value="<%=dto.getCategory()%>"
+					name="categoria" readonly="readonly"></td>
+				<td><input type="number" min="1" step="1"
+					max=<%=dto.getAvailability()%> value=0 id="quant" name="quantity">
+				</td>
+				<td>
+					<button type="submit">Aggiungi questo prodotto al tuo
+						ordine</button>
+				</td>
+			</form>
+			</tr>
+		</table>
 		<br>
-		<div class="main">
-			<%
-				ProductDTO dto = (ProductDTO) request.getSession().getAttribute("dto");
-			%>
-			<table>
-				<tr>
-					<th>Nome</th>
-					<th>Descrizione</th>
-					<th>Disponibilità</th>
-					<th>Prezzo</th>
-					<th>Categoria</th>
-				</tr>
-				<tr>
-					<td><%=dto.getName()%></td>
-					<td><%=dto.getDescription()%></td>
-					<td><%=dto.getAvailability()%></td>
-					<td><%=dto.getPrice()%></td>
-					<td><%=dto.getCategory()%></td>
-				</tr>
-			</table>
-			<br>
-		</div>
+	</div>
 </body>
 </html>
