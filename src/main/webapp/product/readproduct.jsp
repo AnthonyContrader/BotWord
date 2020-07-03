@@ -14,7 +14,7 @@
 <title>Read Product</title>
 </head>
 <body>
-	<%@ include file="./css/header.jsp"%>
+	<%@ include file="../css/header.jsp"%>
 	<%
 		UserDTO userDto = (UserDTO) request.getSession().getAttribute("user");
 	%>

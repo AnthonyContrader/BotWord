@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<%@ include file="./css/header.jsp"%>
+	<%@ include file="../css/header.jsp"%>
 
 	<%
 		UserDTO userDto = (UserDTO) request.getSession().getAttribute("user");
@@ -26,15 +26,19 @@
 			switch (userDto.getUsertype()) {
 		case ADMIN:
 		%>
-		<a href="/user/getall">Users</a> <a
-			href=/product/getall>Lista Prodotti</a> <a href="/user/logout"
-			id="logout">Logout</a>
+		<a href="/homeadmin.jsp">Home</a>
+		<a href="/user/getall">Users</a> <a class="active"
+			href=/product/getall>Lista Prodotti</a>
+			<a class="active" href="/shoppinglist/getall">Order List</a>
+			<a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				case USER:
 		%>
-		<a href="/product/getall">Lista Prodotti</a> <a
-			href="/user/logout" id="logout">Logout</a>
+		<a href="/homeadmin.jsp">Home</a>
+		<a class="active" href="/product/getall">Lista Prodotti</a>
+		<a class="active" href="/shoppinglist/getall">Order List</a>
+		<a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				}
@@ -43,7 +47,7 @@
 
 	<div class="main">
 		<%
-			List<ProductDTO> listDto = (List<ProductDTO>) request.getSession().getAttribute("listdto");
+			List<ProductDTO> listDto = (List<ProductDTO>) request.getSession().getAttribute("productlist");
 		%>
 		<br>
 		<%
@@ -53,9 +57,10 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Disponibilità</th>
+				<th>Disponibilitï¿½</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
+				<th></th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -72,6 +77,9 @@
 				<td><a href="/product/preupdate?id=<%=dto.getId()%>">Edit</a></td>
 
 				<td><a href="/product/delete?id=<%=dto.getId()%>">Delete</a></td>
+
+				<td> <a href="/product/category?category=<%=dto.getCategory()%>"> Ricerca tutti i prodotti di questa categoria</a> </td>
+
 			</tr>
 
 			<%
@@ -100,12 +108,12 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label>Disponibilità</label>
+					<label>Disponibilitï¿½</label>
 				</div>
 				<div class="col-75">
 					<input type="number" min="1" step="1" id="quant"
 						name="availability" required
-						placeholder="inserisci la disponibilià del prodotto">
+						placeholder="inserisci la disponibiliï¿½ del prodotto">
 				</div>
 			</div>
 			<div class="row">
@@ -135,9 +143,10 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Disponibilità</th>
+				<th>Disponibilitï¿½</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
+				<th> </th>
 			</tr>
 			<%
 				for (ProductDTO dto : listDto) {
@@ -148,6 +157,7 @@
 				<td><%=dto.getAvailability()%></td>
 				<td><%=dto.getPrice()%></td>
 				<td> <%=dto.getCategory()%> </td>
+				<td> <a href="/product/category?category=<%=dto.getCategory()%>"> Ricerca tutti i prodotti di questa categoria</a> </td>
 			</tr>
 			<%
 				}
