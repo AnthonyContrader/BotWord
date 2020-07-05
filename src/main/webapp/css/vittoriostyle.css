@@ -129,8 +129,8 @@ table {
 
 
 th, td {
-	text-align: center;
-	padding: 8px;
+	text-align: left;
+	padding: 15px;
 }
 
 tr:nth-child(even) {

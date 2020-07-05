@@ -26,18 +26,15 @@
 			switch (userDto.getUsertype()) {
 		case ADMIN:
 		%>
-		<a href="/homeadmin.jsp">Home</a>
 		<a href="/user/getall">Users</a> <a class="active"
 			href=/product/getall>Lista Prodotti</a>
-			<a class="active" href="/shoppinglist/getall">Order List</a>
+			<a  href="/shoppinglist/getall">Order List</a>
 			<a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				case USER:
 		%>
-		<a href="/homeadmin.jsp">Home</a>
 		<a class="active" href="/product/getall">Lista Prodotti</a>
-		<a class="active" href="/shoppinglist/getall">Order List</a>
 		<a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;

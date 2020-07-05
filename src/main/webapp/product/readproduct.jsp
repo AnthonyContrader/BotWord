@@ -26,12 +26,13 @@
 		case ADMIN:
 		%>
 		<a href="/user/getall">Users</a> <a href=/product/getall>Lista
-			Prodotti</a> <a href="/user/logout" id="logout">Logout</a>
+			Prodotti</a> <a href="/shoppinglist/getall"> Order List </a> <a
+			href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				case USER:
 		%>
-		<a href="/product/getall">Users</a> <a href=/product/getall>Lista
+		 <a href=/product/getall>Lista
 			Prodotti</a> <a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
@@ -47,7 +48,7 @@
 			<tr>
 				<th></th>
 				<th></th>
-				<th>Nome</th>
+				<th>Nome       </th>
 				<th>Descrizione</th>
 				<th>Disponibilità</th>
 				<th>Prezzo</th>
@@ -74,8 +75,7 @@
 					max=<%=dto.getAvailability()%> value=0 id="quant" name="quantity">
 				</td>
 				<td>
-					<button type="submit">Aggiungi questo prodotto al tuo
-						ordine</button>
+					<input type="submit" value="Aggiungi questo prodotto al tuo ordine">
 				</td>
 			</form>
 			</tr>

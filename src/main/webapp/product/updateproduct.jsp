@@ -27,14 +27,16 @@
 		case ADMIN:
 		%>
 		<a href="/user/getall">Users</a> <a
-			href=/product/getall>Lista Prodotti</a> <a href="/user/logout"
+			href=/product/getall>Lista Prodotti</a> 
+			<a href="/shoppinglist/getall">Order List</a>
+			<a href="/user/logout"
 			id="logout">Logout</a>
 		<%
 			break;
 				case USER:
 		%>
-		<a href="/product/getall">Users</a> <a
-			href="/user/logout" id="logout">Logout</a>
+		 <a href=/product/getall>Lista Prodotti</a>
+		 <a href="/user/logout" id="logout">Logout</a>
 		<%
 			break;
 				}

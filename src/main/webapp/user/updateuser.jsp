@@ -18,6 +18,7 @@
   <a href="/homeadmin.jsp">Home</a>
   <a href="/user/getall">Users</a>
   <a href=/product/getall>Lista Prodotti</a>
+  <a href="/shoppinglist/getall">Order List</a>
   <a href="/user/logout" id="logout">Logout</a>
 </div>
 <br>
