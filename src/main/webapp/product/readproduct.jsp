@@ -44,42 +44,31 @@
 		<%
 			ProductDTO dto = (ProductDTO) request.getSession().getAttribute("dto");
 		%>
-		<table>
-			<tr>
-				<th></th>
-				<th></th>
-				<th>Nome</th>
-				<th>Descrizione</th>
-				<th>Disponibilità</th>
-				<th>Prezzo</th>
-				<th>Categoria</th>
-				<th>Seleziona la quantità da aggiungere all'ordine</th>
-				<th></th>
-			</tr>
-			<form action="/shoppinglist/insert" method="post">
-				<td><input type="hidden" value=<%=userDto.getId()%>
-					name="userId"></td>
-				<td><input type="hidden" value=<%=dto.getId()%>
-					name="productId"></td>
-				<td><input type="text" value="<%=dto.getName()%>" name="name"
-					readonly="readonly"></td>
-				<td><input type="text" value="<%=dto.getDescription()%>"
-					name="descrizione" readonly="readonly"></td>
-				<td><input type="number" value=<%=dto.getAvailability()%>
-					name="disponibilita" readonly="readonly"></td>
-				<td><input type="number" value=<%=dto.getPrice()%>
-					name="totalPrice" readonly="readonly"></td>
-				<td><input type="text" value="<%=dto.getCategory()%>"
-					name="categoria" readonly="readonly"></td>
-				<td><input type="number" min="1" step="1"
-					max=<%=dto.getAvailability()%> value=0 id="quant" name="quantity">
-				</td>
-				<td>
-					<input type="submit" value="Aggiungi questo prodotto al tuo ordine">
-				</td>
-			</form>
-			</tr>
-		</table>
+		<div class = "row">
+		<div class="table">
+		<div class="tr">
+		<span class="th"> </span>
+        <span class="th"> </span>
+        <span class="th">Nome</span>
+		<span class="th">Descrizione </span>
+		<span class="th">Disponibilità </span>
+		<span class="th">Prezzo </span>
+		<span class="th">Categoria </span>
+		<span class="th">Seleziona la quantità da aggiungere all'ordine </span>
+		</div>
+	    <form class="tr" action="/shoppinglist/insert" method="post" >
+       <span class="td"> <input type="hidden" value=<%=userDto.getId()%> name="userId"> </span>
+       <span class="td"> <input type="hidden" value=<%=dto.getId()%> name="productId"> </span>
+        <span class="td"><input type="text" value="<%=dto.getName()%>" name="name" readonly="readonly"></span>
+         <span class="td"><input type="text" value="<%=dto.getDescription()%>" name="descrizione" readonly="readonly"></span>
+          <span class="td"><input type="number" value=<%=dto.getAvailability()%> name="disponibilita" readonly="readonly"></span>
+           <span class="td"><input type="number" value=<%=dto.getPrice()%> name="totalPrice" readonly="readonly"></span>
+            <span class="td"><input type="text" value="<%=dto.getCategory()%>" name="categoria" readonly="readonly"></span>
+            <span class="td"><input type="number" min="1" step="1" max=<%=dto.getAvailability()%> value=0 id="quant" name="quantity"></span>
+             <span class="td"><button type="submit"> Aggiungi questo prodotto al tuo ordine </button></span>
+    </form>
+</div>
+</div>
 		<br>
 	</div>
 </body>
