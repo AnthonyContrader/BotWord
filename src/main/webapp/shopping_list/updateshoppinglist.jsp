@@ -15,11 +15,11 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 <div class="navbar">
-  <a href="/homeadmin.jsp">Home</a>
-  <a href="/user/getall">Users</a>
-  <a href=/product/getall>Lista Prodotti</a> 
-  <a href="/shoppinglist/getall">Order List</a>
-  <a href="/user/logout" id="logout">Logout</a>
+<a href="/homeadmin.jsp">Home</a>
+  		<a href="/user/getall">Users</a>
+  		<a href=/product/getall>Lista Prodotti</a>
+ 	 	<a href="/shoppinglist/getall">Order List</a>
+ 		<a href="/user/logout" id="logout">Logout</a>
 </div>
 <br>
 <div class="main">
@@ -66,7 +66,8 @@
     <div class="col-75">
       <input type="text" id="date" name="date" value=<%=sl.getDate()%>>
     </div>
-
+    <input type="hidden" name="id" value =<%=sl.getId() %>>
+	
       <button type="submit" >Edit</button>
 </form>
 </div>
