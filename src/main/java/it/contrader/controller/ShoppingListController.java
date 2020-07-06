@@ -44,10 +44,11 @@ public class ShoppingListController {
 	}
 
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("userId") Long userId,
+	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("userId") Long userId,
 			@RequestParam("productId") Long productId, @RequestParam("quantity") Integer quantity, @RequestParam("totalPrice") Double totalPrice) {
 
 		ShoppingListDTO dto = new ShoppingListDTO();
+		dto.setId(id);
 		dto.setUserId(userId);
 		dto.setProductId(productId);
 		dto.setQuantity(quantity);
@@ -62,7 +63,7 @@ public class ShoppingListController {
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("userId") Long userId,
 			@RequestParam("productId") Long productId, @RequestParam("quantity") int quantity, @RequestParam("totalPrice") Double totalPrice) {
-		
+
 		ShoppingListDTO dto = new ShoppingListDTO();
 		dto.setUserId(userId);
 		dto.setProductId(productId);
