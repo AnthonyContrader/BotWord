@@ -129,8 +129,8 @@ table {
 
 
 th, td {
-	text-align: left;
-	padding: 15px;
+	text-align: center;
+	padding: 8px;
 }
 
 tr:nth-child(even) {
@@ -323,5 +323,4 @@ div.navbar a.active {
 	opacity: .9;
 	z-index: -1; opacity : .9;
 	width: 8%;
-}
 }

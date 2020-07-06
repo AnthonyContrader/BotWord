@@ -48,7 +48,7 @@
 			<tr>
 				<th></th>
 				<th></th>
-				<th>Nome       </th>
+				<th>Nome</th>
 				<th>Descrizione</th>
 				<th>Disponibilità</th>
 				<th>Prezzo</th>
