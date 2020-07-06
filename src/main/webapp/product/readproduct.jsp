@@ -51,7 +51,6 @@
         <span class="th"> </span>
         <span class="th">Nome</span>
 		<span class="th">Descrizione </span>
-		<span class="th">Disponibilità </span>
 		<span class="th">Prezzo </span>
 		<span class="th">Categoria </span>
 		<span class="th">Seleziona la quantità da aggiungere all'ordine </span>
@@ -61,7 +60,6 @@
        <span class="td"> <input type="hidden" value=<%=dto.getId()%> name="productId"> </span>
         <span class="td"><input type="text" value="<%=dto.getName()%>" name="name" readonly="readonly"></span>
          <span class="td"><input type="text" value="<%=dto.getDescription()%>" name="descrizione" readonly="readonly"></span>
-          <span class="td"><input type="number" value=<%=dto.getAvailability()%> name="disponibilita" readonly="readonly"></span>
            <span class="td"><input type="number" value=<%=dto.getPrice()%> name="totalPrice" readonly="readonly"></span>
             <span class="td"><input type="text" value="<%=dto.getCategory()%>" name="categoria" readonly="readonly"></span>
             <span class="td"><input type="number" min="1" step="1" max=<%=dto.getAvailability()%> value=0 id="quant" name="quantity"></span>

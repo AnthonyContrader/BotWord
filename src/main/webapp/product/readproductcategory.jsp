@@ -53,7 +53,6 @@
 		<table>
 			<tr>
 				<th>Nome</th>
-				<th>Disponibilità</th>
 				<th>Prezzo</th>
 				<th>Categoria</th>
 				<th></th>
@@ -65,7 +64,6 @@
 			<tr>
 				<td><a href="/product/read?id=<%=dto.getId()%>"> <%=dto.getName()%>
 				</a></td>
-				<td><%=dto.getAvailability()%></td>
 				<td><%=dto.getPrice()%></td>
 				<td><%=dto.getCategory()%></td>
 
