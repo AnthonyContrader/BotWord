@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row mt-5">
+   
+    <div class="col md-10">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let product of products">
+          <td><a> {{ product.name }} </a></td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.category }}</td>
+        </tr>
+      </table>
+    </div>
+    
+</div>
