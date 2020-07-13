@@ -11,7 +11,7 @@ export class ProductsComponent implements OnInit {
 
   products: ProductDTO[];
   producttoinsert: ProductDTO = new ProductDTO();
-  productRead: ProductDTO = new ProductDTO();
+ 
 
 
   constructor(private service: ProductService) { }
