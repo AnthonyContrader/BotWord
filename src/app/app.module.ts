@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
 import { AdminModule } from './admin/admin.module';
 import { FormsModule } from '@angular/forms';
+import { UserModule } from './user/user.module';
 
 /** 
  * Modulo principale dell'applicazione. Qui vengono importati i moduli secondari. L'UNICA component
@@ -18,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 */
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     LayoutModule,
     AdminModule,
+    UserModule,
     FormsModule
   ],
   providers: [],
