@@ -14,8 +14,6 @@ export class ProductDetailsComponent implements OnInit {
 
   private product_id: number;
 
-  //productRead: ProductDTO = new ProductDTO();
-
   constructor(private route:ActivatedRoute, private service: ProductService) { }
 
   ngOnInit() {
@@ -29,6 +27,11 @@ export class ProductDetailsComponent implements OnInit {
 
   read(){
     this.service.read(this.product_id).subscribe(prod => this.productRead = prod );
+  }
+
+  update(product: ProductDTO){
+    this.service.update(product).subscribe( prod => this.productRead = prod);
+    alert("Dati modificati correttamente");
   }
 
 }

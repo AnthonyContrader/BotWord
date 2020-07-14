@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductService } from 'src/service/product.service';
 import { ProductDTO } from 'src/dto/productdto';
 
@@ -11,14 +11,14 @@ export class ProductsComponent implements OnInit {
 
   products: ProductDTO[];
   producttoinsert: ProductDTO = new ProductDTO();
- 
-
+  
 
   constructor(private service: ProductService) { }
 
   ngOnInit() {
     this.getProducts();
   }
+
 
   getProducts(){
     this.service.getAll().subscribe(products => this.products = products);
@@ -34,6 +34,12 @@ export class ProductsComponent implements OnInit {
 
   insert(product: ProductDTO){
     this.service.insert(product).subscribe( () => this.getProducts());
+  }
+
+  onFormSubmit({ value}: { value: ProductDTO}){
+    this.producttoinsert = value;
+    this.service.insert(this.producttoinsert).subscribe(() => this.getProducts());
+
   }
 
   clear(){

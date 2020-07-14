@@ -10,13 +10,15 @@
           <th>Availability</th>
           <th>Category</th>
           <th></th>
+          <th></th>
         </tr>
         <tr>
-          <td>{{ productRead.name }} </td>
-          <td>{{ productRead.price }}</td>
-          <td>{{ productRead.description }}</td>
-          <td>{{ productRead.availability }}</td>
-          <td>{{ productRead.category }}</td>
+          <td><input type="text" [(ngModel)]="productRead.name"> </td>
+          <td><input type="number" step="0.1" min="0.1" [(ngModel)]="productRead.price"> </td>
+          <td><input type="text" [(ngModel)]="productRead.description" ></td>
+          <td><input type="number"step="1" min= "1" [(ngModel)]="productRead.availability"> </td>
+          <td><input type="text" [(ngModel)]="productRead.category" ></td>
+          <td> <button (click)=update(productRead)>Edit</button> </td>
           <td> <button> Aggiungi all'ordine </button> </td>
         </tr>
       </table>

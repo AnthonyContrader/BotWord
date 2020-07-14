@@ -35,8 +35,17 @@ a:hover {
 }
 
 input, select{
+	width: 100%;
     background-color: inherit;
-    font-size: inherit;
+	font-size: inherit;
+	padding: 5px 5px;
+    margin: 8px 0;
+}
+
+form{
+	width: 350px;
+	padding-bottom: 10px;
+	float: left;
 }
 
 input:hover,  input:active, input:focus{
