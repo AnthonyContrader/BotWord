@@ -1,0 +1,36 @@
+form{
+    margin-top:270px;
+    width: 350px;
+    padding: 10px;
+    border-radius:0;
+    border-color: crimson;
+    position: absolute;
+    bottom: 130px;
+    left: 820px;
+}
+
+
+input, input:hover, input::selection, input:checked, input:focus{
+    border: 0;
+    background-color: darkorange;
+    border-radius: 0;
+    color: white;
+    border-bottom: 1px solid crimson;
+    margin: 0px; 
+    font-size: 12px;
+    width:  280px;
+}
+
+.container-fluid{
+    background-color: darkorange;
+    height: 100vh;
+}
+input::placeholder{
+    color: white;
+}
+.form-control{
+border: none;
+background-color: darkorange;
+color: white;
+border-bottom: 1px solid white;
+}
