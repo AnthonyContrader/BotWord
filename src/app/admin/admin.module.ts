@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
  * l'admin. Questo modulo importa AdminRoutingModule.
@@ -16,7 +17,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProductsComponent, ProductDetailsComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProductsComponent, ProductDetailsComponent, ProductCategoryComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

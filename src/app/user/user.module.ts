@@ -5,11 +5,12 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserRoutingModule } from './user-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 
 
 @NgModule({
-    declarations: [UserDashboardComponent, ProductsComponent, ProductDetailsComponent],
+    declarations: [UserDashboardComponent, ProductsComponent, ProductDetailsComponent, ProductCategoryComponent],
     imports: [
       CommonModule,
       UserRoutingModule,
