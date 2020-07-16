@@ -1,25 +1,31 @@
 package it.contrader.dao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import it.contrader.controller.GestoreEccezioni;
-import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.ShoppingList;
+import it.contrader.utils.ConnectionSingleton;
+import it.contrader.utils.GestoreEccezioni;
 
 public class ShoppingListDAO {
 
 	private final String QUERY_ALL = "select * from shopping_lists";
-	private final String QUERY_INSERT = "insert into shopping_lists (user_id, total_price, shopping_list) values (?,?, ?)";
+	private final String QUERY_INSERT = "insert into shopping_lists (user_id, total_price, shopping_list, shopping_list_date) values (?,?, ?,now())";
 	private final String QUERY_READ = "select * from shopping_lists where shopping_list_id=?";
 
 	private final String QUERY_UPDATE = "UPDATE shopping_lists SET user_id = ?, total_price=?, shopping_list=? WHERE shopping_list_id=?";
-	private final String QUERY_DELETE = "delete from user where shopping_list_id=?";
+	private final String QUERY_DELETE = "delete from shopping_lists where shopping_list_id=?";
+	private final String FIND_BY_USERID = "select * from shopping_lists where user_id = ?";
 
 	public ShoppingListDAO() {
 	}
@@ -36,7 +42,8 @@ public class ShoppingListDAO {
 				Double totalPrice = resultSet.getDouble("total_price");
 				String jsonString = resultSet.getString("shopping_list");
 				JSONObject json = toJsonObject(jsonString);
-				ShoppingList shoppingList = new ShoppingList(userId, json, totalPrice);
+				Date data = resultSet.getDate("shopping_list_date");
+				ShoppingList shoppingList = new ShoppingList(userId, json, totalPrice, data);
 				shoppingList.setShopListId(shoppingListId);
 				shoppingsLists.add(shoppingList);
 			}
@@ -80,7 +87,8 @@ public class ShoppingListDAO {
 				price = resultSet.getDouble("total_price");
 				jsonString = resultSet.getString("shopping_list");
 				JSONObject json = toJsonObject(jsonString);
-				ShoppingList shoppingList = new ShoppingList(userId, json, price);
+				Date data = resultSet.getDate("shopping_list_date");
+				ShoppingList shoppingList = new ShoppingList(userId, json, price, data);
 				shoppingList.setShopListId(shoppingListId);
 				return shoppingList;
 			}
@@ -116,7 +124,7 @@ public class ShoppingListDAO {
 					shoppingListToUpdate.setTotalPrice(shoppingListRead.getTotalPrice());
 				}
 
-				// Update the user
+			
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(1, shoppingListToUpdate.getUserId());
 				preparedStatement.setDouble(2, shoppingListToUpdate.getTotalPrice());
@@ -148,6 +156,34 @@ public class ShoppingListDAO {
 		} catch (SQLException e) {
 		}
 		return false;
+	}
+	
+	public ShoppingList findByUserId(int userId) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_USERID);
+			preparedStatement.setInt(1, userId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				String jsonString;
+				Double price;
+				int shoppingListId;
+				shoppingListId = resultSet.getInt("shopping_list_id");
+				userId = resultSet.getInt("user_id");
+				price = resultSet.getDouble("total_price");
+				jsonString = resultSet.getString("shopping_list");
+				JSONObject json = toJsonObject(jsonString);
+				Date data = resultSet.getDate("shopping_list_date");
+				ShoppingList shoppingList = new ShoppingList(userId, json, price,data);
+				shoppingList.setShopListId(shoppingListId);
+				return shoppingList;
+			}
+			else
+			return null;
+		} catch (SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return null;
+		}
 	}
 
 	public JSONObject toJsonObject(String jsonString) {

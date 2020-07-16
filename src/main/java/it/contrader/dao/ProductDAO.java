@@ -7,19 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.contrader.controller.GestoreEccezioni;
-import it.contrader.main.ConnectionSingleton;
+import it.contrader.utils.GestoreEccezioni;
+import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.Product;
 
 public class ProductDAO {
 
-	// VERIFICARE NOME TABELLA E TUTTI I CAMPI, IO LI STO IPOTIZZANDO
 
 	private final String FIND_ALL = "select * from products";
 	private final String FIND_BY_ID = "select * from products where prod_id = ?";
-	private final String INSERT_QUERY = "insert into products (name, description, quantity, price, category) "
+	private final String INSERT_QUERY = "insert into products (name, description, availability, price, category) "
 			+ "values (?,?,?,?,?)";
-	private final String UPDATE_QUERY = "update products set name = ?, description = ?, quantity = ?, price = ?, category = ? where prod_id = ?";
+	private final String UPDATE_QUERY = "update products set name = ?, description = ?, availability = ?, price = ?, category = ? where prod_id = ?";
 	private final String DELETE_QUERY = "delete from products where prod_id = ?";
 
 	public ProductDAO() {
@@ -34,7 +33,7 @@ public class ProductDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			Product product;
 			while (resultSet.next()) {
-				int prodId = resultSet.getInt("prod_id"); // controllare campi tabella
+				int prodId = resultSet.getInt("prod_id"); 
 				product = createProduct(resultSet);
 				product.setProdId(prodId);
 				productList.add(product);
@@ -55,7 +54,7 @@ public class ProductDAO {
 
 			if (resultSet.next()) {
 				Product product = createProduct(resultSet);
-				product.setProdId(resultSet.getInt("prod_id")); // controllare campi
+				product.setProdId(resultSet.getInt("prod_id")); 
 				return product;
 			} else
 				return null;
@@ -71,7 +70,7 @@ public class ProductDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY);
 			preparedStatement.setString(1, product.getName());
 			preparedStatement.setString(2, product.getDescription());
-			preparedStatement.setInt(3, product.getQuantity());
+			preparedStatement.setInt(3, product.getAvailability());
 			preparedStatement.setDouble(4, product.getPrice());
 			preparedStatement.setString(5, product.getCategory());
 			int affectedRows = preparedStatement.executeUpdate();
@@ -103,8 +102,8 @@ public class ProductDAO {
 					productToUpdate.setDescription(productRead.getDescription());
 				}
 
-				if (productToUpdate.getQuantity() == null || productToUpdate.getQuantity() <= 0) {
-					productToUpdate.setQuantity(productRead.getQuantity());
+				if (productToUpdate.getAvailability() == null || productToUpdate.getAvailability() <= 0) {
+					productToUpdate.setAvailability(productRead.getAvailability());
 				}
 
 				if (productToUpdate.getPrice() == null || productToUpdate.getPrice() <= 0.0) {
@@ -113,7 +112,7 @@ public class ProductDAO {
 				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY);
 				preparedStatement.setString(1, productToUpdate.getName());
 				preparedStatement.setString(2, productToUpdate.getDescription());
-				preparedStatement.setInt(3, productToUpdate.getQuantity());
+				preparedStatement.setInt(3, productToUpdate.getAvailability());
 				preparedStatement.setDouble(4, productToUpdate.getPrice());
 				preparedStatement.setString(5, productToUpdate.getCategory());
 				preparedStatement.setInt(6, productToUpdate.getProdId());
@@ -124,6 +123,7 @@ public class ProductDAO {
 					return false;
 
 			} catch (SQLException e) {
+				e.printStackTrace();
 				return false;
 			}
 		}
@@ -146,7 +146,7 @@ public class ProductDAO {
 	}
 
 	private Product createProduct(ResultSet rs) throws SQLException {
-		return new Product(rs.getString("name"), // controllare i campi
-				rs.getString("description"), rs.getInt("quantity"), rs.getDouble("price"), rs.getString("category"));
+		return new Product(rs.getString("name"), 
+				rs.getString("description"), rs.getInt("availability"), rs.getDouble("price"), rs.getString("category"));
 	}
 }
