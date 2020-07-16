@@ -1,6 +1,5 @@
 package it.contrader.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,27 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class User {
-
-	public enum Usertype {
-		ADMIN, USER
-	}
-
+public class Product {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
-	private String username;
-
-	private String password;
-
-	private Usertype usertype;
-	
 	private String name;
-	
-	private String surname;
-	
-	private String address;
-
+	private String description;
+	private Integer availability;
+	private Double price;
+	private String category;
 }

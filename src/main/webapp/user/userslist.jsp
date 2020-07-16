@@ -11,11 +11,14 @@
 
 </head>
 <body>
-	<%@ include file="./css/header.jsp"%>
+	<%@ include file="../css/header.jsp"%>
 
 	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a> <a class="active"
-			href="/user/getall">Users</a> <a href="/user/logout" id="logout">Logout</a>
+		<a href="/homeadmin.jsp">Home</a>
+  		<a href="/user/getall">Users</a>
+  		<a href=/product/getall>Lista Prodotti</a>
+ 	 	<a href="/shoppinglist/getall">Order List</a>
+ 		<a href="/user/logout" id="logout">Logout</a>
 	</div>
 	<div class="main">
 		<%
@@ -29,6 +32,9 @@
 				<th>Username</th>
 				<th>Password</th>
 				<th>Usertype</th>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Address</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -40,10 +46,14 @@
 				</a></td>
 				<td><%=u.getPassword()%></td>
 				<td><%=u.getUsertype()%></td>
+				<td><%=u.getName()%></td>
+				<td><%=u.getSurname()%></td>
+				<td><%=u.getAddress()%></td>
+
 				<td><a href="/user/preupdate?id=<%=u.getId()%>">Edit</a></td>
 
-
 				<td><a href="/user/delete?id=<%=u.getId()%>">Delete</a></td>
+
 
 			</tr>
 			<%
@@ -74,6 +84,34 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
+					<label for="name">Name</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="nome" name="name"
+						placeholder="inserisci il nome">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="surname">Surname</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="cognome" name="surname"
+						placeholder="inserisci il cognome">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="address">Address</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="indirizzo" name="address"
+						placeholder="inserisci l'indirizzo">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
 					<label for="type">Usertype</label>
 				</div>
 				<div class="col-75">
@@ -89,6 +127,6 @@
 
 	</div>
 	<br>
-	<%@ include file="./css/footer.jsp"%>
+	<%@ include file="../css/footer.jsp"%>
 </body>
 </html>

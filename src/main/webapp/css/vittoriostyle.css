@@ -5,6 +5,25 @@ html {
 * {
 	font-family: sans-serif;
 }
+
+DIV.table 
+{
+    display:table;
+}
+FORM.tr, DIV.tr
+{
+    display:table-row;
+}
+SPAN.td
+{
+    display:table-cell;
+}
+span.th{
+	display: table-cell;
+	background-color: #00a990;
+	color: #ffffff;
+	text-align: center;
+}
 div.text{
 	clear:both;
 	margin-top: 3%;
@@ -186,7 +205,6 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
-  float:right;
 }
 
 input:hover {
@@ -323,5 +341,4 @@ div.navbar a.active {
 	opacity: .9;
 	z-index: -1; opacity : .9;
 	width: 8%;
-}
 }
