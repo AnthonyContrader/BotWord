@@ -7,8 +7,8 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
-import { ShoppingListsComponent } from './shoppinglists/shoppinglists.component';
-import { ShoppingListDetailsComponent } from './shoppinglist-details/shoppinglist-details.component';
+import { ShoppingListsComponent } from '../shoppinglists/shoppinglists.component';
+import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppinglist-details.component';
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:

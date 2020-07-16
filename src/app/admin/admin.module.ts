@@ -8,8 +8,8 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
-import { ShoppingListsComponent } from './shoppinglists/shoppinglists.component';
-import { ShoppingListDetailsComponent } from './shoppinglist-details/shoppinglist-details.component';
+import { ShoppingListsComponent } from '../shoppinglists/shoppinglists.component';
+import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppinglist-details.component';
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza
  * l'admin. Questo modulo importa AdminRoutingModule.
