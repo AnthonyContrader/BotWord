@@ -7,17 +7,19 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
+import { ShoppingListsComponent } from './shoppinglists/shoppinglists.component';
+import { ShoppingListDetailsComponent } from './shoppinglist-details/shoppinglist-details.component';
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
- * appena fa il login viene caricato nel <router-outlet> di app-component il layout e nel 
- * <router-outlet> del layout (come percorsi "children") vengono visualizzati gli altri 
+ * appena fa il login viene caricato nel <router-outlet> di app-component il layout e nel
+ * <router-outlet> del layout (come percorsi "children") vengono visualizzati gli altri
  * (qui sotto sono indentati).
- * 
+ *
  * @author Vittorio Valent
- * 
+ *
  * @see AdminLayoutComponent
- * 
+ *
  * @see layout
  */
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
     { path: 'products', component: ProductsComponent},
     {path: 'product-details/:id', component: ProductDetailsComponent},
     {path: 'product-category/:category', component: ProductCategoryComponent}
+    { path: 'shoppinglists', component: ShoppingListsComponent},
+    {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent}
     ]}
 ];
 
