@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row mt-5">
+   
+    <div class="col md-10">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Availability</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><input type="text" [(ngModel)]="productRead.name" readonly> </td>
+          <td><input type="number" step="0.1" min="0.1" [(ngModel)]="productRead.price" readonly> </td>
+          <td><input type="text" [(ngModel)]="productRead.description" readonly></td>
+          <td><input type="number"step="1" min= "1" [(ngModel)]="productRead.availability" readonly> </td>
+          <td><input type="text" [(ngModel)]="productRead.category" readonly></td>
+          <td> <button> Aggiungi all'ordine </button> </td>
+        </tr>
+      </table>
+    </div>
+    
+</div>

@@ -4,6 +4,9 @@ import { AdminLayoutComponent } from '../layout/admin-layout/admin-layout.compon
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
@@ -21,8 +24,11 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminLayoutComponent, children:[
     { path: '', component: AdminDashboardComponent},
     { path: 'users', component: UsersComponent},
-    { path: 'work-in-progress', component: WorkInProgressComponent}
-  ]}
+    { path: 'work-in-progress', component: WorkInProgressComponent},
+    { path: 'products', component: ProductsComponent},
+    {path: 'product-details/:id', component: ProductDetailsComponent},
+    {path: 'product-category/:category', component: ProductCategoryComponent}
+    ]}
 ];
 
 @NgModule({
