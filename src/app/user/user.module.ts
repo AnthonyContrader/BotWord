@@ -6,8 +6,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
-import { ShoppingListsComponent } from '../shoppinglists/shoppinglists.component';
-import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppinglist-details.component';
+import { AdminModule } from '../admin/admin.module';
 
 
 @NgModule({
@@ -15,7 +14,8 @@ import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppingli
     imports: [
       CommonModule,
       UserRoutingModule,
-      FormsModule
+      FormsModule,
+      AdminModule
     ]
   })
   export class UserModule { }

@@ -22,7 +22,7 @@ import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppingli
 @NgModule({
   declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProductsComponent,
                  ProductDetailsComponent, ProductCategoryComponent, ShoppingListsComponent, ShoppingListDetailsComponent
-                 , ProfileComponent]
+                 , ProfileComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

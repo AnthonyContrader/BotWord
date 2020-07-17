@@ -33,9 +33,9 @@ const routes: Routes = [
     {path: 'product-details/:id', component: ProductDetailsComponent},
     {path: 'product-category/:category', component: ProductCategoryComponent},
     { path: 'shoppinglists', component: ShoppingListsComponent},
-    {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent}
-    ]},
+    {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent},
     { path: 'profile', component: ProfileComponent}
+]}
 ];
 
 @NgModule({

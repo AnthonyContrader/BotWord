@@ -7,6 +7,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { ShoppingListsComponent } from '../shoppinglists/shoppinglists.component';
 import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppinglist-details.component';
+import { ProfileComponent } from '../admin/profile/profile.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
         {path: 'product-details/:id', component: ProductDetailsComponent},
         {path: 'product-category/:category', component: ProductCategoryComponent},
         {path: 'shoppinglists', component: ShoppingListsComponent},
-        {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent}
+        {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent},
+        {path: 'profile', component: ProfileComponent}
     ]}
 ];
 
