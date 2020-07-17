@@ -1,0 +1,48 @@
+
+<div class="list-group">
+    <i class="fas fa-h" >Nome Utente: {{user.username}} {{user.password}} </i>
+    
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-1">
+  
+      </div>
+      <div class="col-md-10">
+        <table>
+          <tr>
+            <th>
+              Nuovo Username
+            </th>
+            <th>
+              Nuova Password
+            </th>
+            <th>
+              <i class="fas fa-user-edit"></i>
+              Action
+            </th>
+    
+          </tr>
+          
+          <tr>
+            <td>
+              <input [(ngModel)]="user.username">
+            </td>
+            <td>
+              <input [(ngModel)]="user.password">
+            </td>
+            <td>
+              
+              <button (click)=update(user) >Save</button>
+    
+           </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+  
+      </div>
+    </div>
+  </div>
+

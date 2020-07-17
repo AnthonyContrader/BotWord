@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +21,8 @@ import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppingli
  */
 @NgModule({
   declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProductsComponent,
-                 ProductDetailsComponent, ProductCategoryComponent, ShoppingListsComponent, ShoppingListDetailsComponent],
+                 ProductDetailsComponent, ProductCategoryComponent, ShoppingListsComponent, ShoppingListDetailsComponent
+                 , ProfileComponent]
   imports: [
     CommonModule,
     AdminRoutingModule,
