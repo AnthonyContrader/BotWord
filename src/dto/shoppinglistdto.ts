@@ -8,7 +8,7 @@ export class ShoppingListDTO{
 
     quantity: number;
 
-    totalPrice: nuber;
+    totalPrice: number;
 
     // date: string;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractService } from './abstractservice';
-import { ProductDTO } from 'src/dto/shoppinglistdto';
+import { ShoppingListDTO } from 'src/dto/shoppinglistdto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
   })
 
-export class ShoppingistService extends AbstractService<ShoppingListDTO>{
+export class ShoppingListService extends AbstractService<ShoppingListDTO>{
 
     constructor(http: HttpClient) {
         super(http);

@@ -3,6 +3,7 @@ import { LoginDTO } from 'src/dto/logindto';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/service/user.service';
 import { Router } from '@angular/router';
+import { UserDTO } from 'src/dto/userdto';
 
 @Component({
   selector: 'app-login',

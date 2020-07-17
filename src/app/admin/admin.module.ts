@@ -19,7 +19,8 @@ import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppingli
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProductsComponent, ProductDetailsComponent, ProductCategoryComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProductsComponent,
+                 ProductDetailsComponent, ProductCategoryComponent, ShoppingListsComponent, ShoppingListDetailsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

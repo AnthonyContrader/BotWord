@@ -11,8 +11,8 @@
           <!-- <th>Date</th> -->
           <th></th>
         </tr>
-        <tr>
-          <td> <a [routerLink]="['/shoppinglists', shoppinglist.id]"> {{ shoppinglist.id }} </a> </td>
+        <tr *ngFor="let shoppinglist of shoppinglists">
+          <td> <a [routerLink]="['/shoppinglist-details', shoppinglist.id]"> {{ shoppinglist.id }} </a> </td>
           <td>{{ shoppinglist.userId }}</td>
           <td>{{ shoppinglist.productId }}</td>
           <td>{{ shoppinglist.quantity }}</td>

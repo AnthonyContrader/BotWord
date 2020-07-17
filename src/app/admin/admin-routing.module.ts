@@ -29,7 +29,7 @@ const routes: Routes = [
     { path: 'work-in-progress', component: WorkInProgressComponent},
     { path: 'products', component: ProductsComponent},
     {path: 'product-details/:id', component: ProductDetailsComponent},
-    {path: 'product-category/:category', component: ProductCategoryComponent}
+    {path: 'product-category/:category', component: ProductCategoryComponent},
     { path: 'shoppinglists', component: ShoppingListsComponent},
     {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent}
     ]}

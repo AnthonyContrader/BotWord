@@ -9,7 +9,10 @@
           <th>Description</th>
           <th>Availability</th>
           <th>Category</th>
-          <th></th>
+          <th>Quantità <br>
+            da aggiungere <br>
+            all'ordine</th>
+            <th></th>
         </tr>
         <tr>
           <td><input type="text" [(ngModel)]="productRead.name" readonly> </td>
@@ -17,7 +20,8 @@
           <td><input type="text" [(ngModel)]="productRead.description" readonly></td>
           <td><input type="number"step="1" min= "1" [(ngModel)]="productRead.availability" readonly> </td>
           <td><input type="text" [(ngModel)]="productRead.category" readonly></td>
-          <td> <button> Aggiungi all'ordine </button> </td>
+          <td> <input type="number" step="1" min= "1" [value] = "quantity" [(ngModel)]="quantity" ></td>
+          <td> <button (click)=addToShoppingList(productRead) > Aggiungi <br> all'ordine </button> </td>
         </tr>
       </table>
     </div>

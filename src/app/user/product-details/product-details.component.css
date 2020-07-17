@@ -39,6 +39,10 @@ input, select{
     font-size: inherit;
 }
 
+input, text {
+	width: 150px;
+}
+
 input:hover,  input:active, input:focus{
     border: 2px solid crimson;
 }
