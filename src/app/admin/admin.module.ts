@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +16,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProfileComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
