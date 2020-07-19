@@ -8,6 +8,7 @@ import { ProductCategoryComponent } from './product-category/product-category.co
 import { ShoppingListsComponent } from '../shoppinglists/shoppinglists.component';
 import { ShoppingListDetailsComponent } from '../shoppinglist-details/shoppinglist-details.component';
 import { ProfileComponent } from '../admin/profile/profile.component';
+import { WorkInProgressComponent } from '../admin/work-in-progress/work-in-progress.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
         {path: 'product-category/:category', component: ProductCategoryComponent},
         {path: 'shoppinglists', component: ShoppingListsComponent},
         {path: 'shoppinglist-details/:id', component: ShoppingListDetailsComponent},
-        {path: 'profile', component: ProfileComponent}
+        {path: 'profile', component: ProfileComponent},
+        {path: 'work-in-progress', component: WorkInProgressComponent}
     ]}
 ];
 
