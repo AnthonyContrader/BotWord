@@ -16,10 +16,7 @@
             Usertype
           </th>
           <th>
-            Edit
-          </th>
-          <th>
-            User
+          Action
           </th>
         </tr>
         <tr>
@@ -36,10 +33,9 @@
             </select>
           </td>
           <td>
-            <button (click)="insert(usertoinsert)">Insert</button>
-          </td>
-          <td>
-            <button (click)="clear()">Clear</button>
+            <button (click)="insert(usertoinsert)"><i class="fas fa-plus-circle"></i></button>
+          
+            <button (click)="clear()"><i class="fas fa-undo"></i></button>
           </td>
         </tr>
         <tr *ngFor="let user of users">
@@ -56,10 +52,9 @@
             </select>
           </td>
           <td>
-            <button (click)=update(user)>Save</button>
-          </td>
-          <td>
-            <button (click)="delete(user)">Delete</button>
+            <button (click)=update(user)><i class="far fa-save"></i></button>
+          
+            <button (click)="delete(user)"><i class="far fa-trash-alt"></i></button>
           </td>
         </tr>
       </table>
